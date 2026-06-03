@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Baranyi - Frontend Developer</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Portfolio of Adam Baranyi, a Frontend Developer based in Lucerne, Switzerland. Explore my projects and skills.">
+    <meta name="keywords" content="Adam Baranyi, Frontend Developer, Web Development, Portfolio, HTML, CSS, JavaScript">
+    <meta name="author" content="Adam Baranyi">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23b6e828%22>AB</text></svg>">
+</head>
+<body>
+
+    <!-- Sidebar / Top Navigation -->
+    <nav class="sidebar">
+        <a href="#hero" class="logo" aria-label="Go to start">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 120 120" class="logo-text-svg">
+                    <path id="text-curve" d="M 15,75 A 45,45 0 0,1 105,75" fill="none" />
+                    <text class="curved-text">
+                        <textPath href="#text-curve" startOffset="50%" text-anchor="middle">
+                            frontend developer
+                        </textPath>
+                    </text>
+                </svg>
+                <span class="logo-initials">AB</span>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#why-me" class="nav-link" data-i18n="nav_why_me">Why me</a></li>
+            <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
+            <li><a href="#my-work" class="nav-link" data-i18n="nav_my_work">My Work</a></li>
+            <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger Button (nur Mobile) -->
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true">
+        <button class="overlay-close-btn" id="overlay-close-btn" aria-label="Close navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <nav class="overlay-nav">
+            <a href="#why-me" class="overlay-link" data-i18n="nav_why_me">Why me</a>
+            <a href="#skills" class="overlay-link" data-i18n="nav_skills">My Skill Set</a>
+            <a href="#my-work" class="overlay-link" data-i18n="nav_my_work">My Work</a>
+            <a href="#contact" class="overlay-link" data-i18n="nav_contact">Contact me</a>
+        </nav>
+        <div class="overlay-lang">
+            <span id="overlay-lang-de" class="overlay-lang-btn">DE</span>
+            <span class="overlay-lang-sep">|</span>
+            <span id="overlay-lang-en" class="overlay-lang-btn active">EN</span>
+        </div>
+    </div>
+
+    <!-- Top Right Bar (Socials & Language) -->
+    <div class="top-bar">
+        <div class="nav-socials">
+            <a href="mailto:baranyiadam27@icloud.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+            <a href="https://www.linkedin.com/in/adam-baranyi123" target="_blank" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="https://github.com/AdamBaranyi" target="_blank" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+        </div>
+        <div class="lang-toggle">
+            <span id="lang-de" class="lang-btn">DE</span> | <span id="lang-en" class="lang-btn active">EN</span>
+        </div>
+    </div>
+
+    <!-- Main Content Container for Horizontal Scrolling -->
+    <main class="horizontal-scroll-wrapper">
+
+        <!-- Hero Section -->
+        <section id="hero" class="panel">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Adam Baranyi</h1>
+                    <h2 data-i18n="hero_title">Frontend Developer</h2>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder">
+                        <img src="./assets/img/adam-photo-sharp.webp" alt="Adam Baranyi" id="profile-img" fetchpriority="high" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22400%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23222%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2240%22%20fill%3D%22%23666%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%3EPhoto%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    </div>
+                </div>
+                <a href="#why-me" class="scroll-arrow" aria-label="Scroll right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Why Me Section -->
+        <section id="why-me" class="panel">
+            <div class="section-content flex-col">
+                <h2 class="section-title vertical-text" data-i18n="why_me_title">Why me</h2>
+                <div class="text-content">
+                    <p data-i18n="why_me_text_1">I am a motivated Junior Software Developer with a strong willingness to learn and an interest in modern web development. At school, I am currently learning Angular and deepening my knowledge of HTML, CSS, JavaScript, and TypeScript. I enjoy working in a structured, reliable, and solution-oriented manner. It is particularly important to me to develop clean, user-friendly, and modern websites while continuously improving my skills step by step.</p>
+                    <p data-i18n="why_me_text_2">📍 Lucerne, Switzerland <br> 💼 Open to work: Remote & Hybrid</p>
+                </div>
+                <a href="#skills" class="scroll-arrow align-right" aria-label="Scroll right">
+                    <span data-i18n="btn_next">Next</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="panel">
+            <div class="section-content flex-row">
+                <h2 class="section-title vertical-text" data-i18n="skills_title">My skill set</h2>
+                <ul class="skills-grid">
+                    <li class="skill-item">
+                        <img src="./assets/img/HTML.svg" alt="HTML" loading="lazy">
+                        <span>HTML</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/CSS.svg" alt="CSS" loading="lazy">
+                        <span>CSS</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/JavaScript.svg" alt="JavaScript" loading="lazy">
+                        <span>JavaScript</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/TypeScript.svg" alt="TypeScript" loading="lazy">
+                        <span>TypeScript</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/Angular.svg" alt="Angular" loading="lazy">
+                        <span>Angular</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/Bootstrap.svg" alt="Bootstrap" loading="lazy">
+                        <span>Bootstrap</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/Firebase.svg" alt="Firebase" loading="lazy">
+                        <span>Firebase</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/Git.svg" alt="Git" loading="lazy">
+                        <span>Git</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/Github.svg" alt="GitHub" loading="lazy">
+                        <span>GitHub</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/Figma.svg" alt="Figma" loading="lazy">
+                        <span>Figma</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/SCRUM.svg" alt="Scrum" loading="lazy">
+                        <span>Scrum</span>
+                    </li>
+                    <li class="skill-item">
+                        <img src="./assets/img/restAPI.png" alt="REST API" loading="lazy">
+                        <span>Rest-Api</span>
+                    </li>
+                </ul>
+                <div class="skills-text">
+                    <p data-i18n="skills_text">I use modern technologies to build fast, responsive, and accessible web applications. I am always eager to learn new tools and frameworks to expand my skillset.</p>
+                </div>
+                <a href="#my-work" class="scroll-arrow" aria-label="Scroll right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- My Work Section -->
+        <section id="my-work" class="panel">
+            <div class="section-content flex-row projects-container">
+                <h2 class="section-title vertical-text" data-i18n="work_title">My Work</h2>
+                
+                <div class="project-cards-wrapper">
+                    <!-- Project 1 -->
+                    <article class="project-card new-layout">
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-number">1</span>
+                                <h3>Project Join</h3>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_about">About the project</h4>
+                                    <p data-i18n="proj_join_desc">Together with other bootcamp participants, I built a web app using HTML, CSS, JavaScript, Git, and Firebase. We created a project management tool to visualize the status and responsibilities of tasks.</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_tech">Technologies I have used</h4>
+                                    <p class="tech-stack-text">JavaScript, HTML, CSS, Git, Firebase</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_experience">My group-projects experience</h4>
+                                    <p data-i18n="proj_join_learned">We were a team of three. I gained valuable experience in agile collaboration and learned how important clear communication and clean version control with Git are.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-visuals">
+                            <div class="project-image-new">
+                                <img src="./assets/img/Join1x.webp" alt="Join Project Preview" loading="lazy">
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/AdamBaranyi/Join" target="_blank" class="btn btn-outline-green">GitHub</a>
+                                <a href="https://join.adambaranyi.xyz" target="_blank" class="btn btn-filled-green" data-i18n="btn_live">Live Test</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card new-layout">
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-number">2</span>
+                                <h3>Project Pollo Loco</h3>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_about">About the project</h4>
+                                    <p data-i18n="proj_pollo_desc">A jump-and-run game that brings joy to everyone. I controlled the game logic and applied advanced concepts like Object-Oriented Programming (OOP).</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_tech">Technologies I have used</h4>
+                                    <p class="tech-stack-text">JavaScript, HTML, CSS, OOP</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_learned">What I have learned</h4>
+                                    <p data-i18n="proj_pollo_exp">My biggest takeaway was learning how to split complex game logic into maintainable classes, build a continuous game loop, and calculate collisions efficiently.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-visuals">
+                            <div class="project-image-new">
+                                <img src="./assets/img/Pollolocob1x.webp" alt="El Pollo Loco Preview" loading="lazy">
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/AdamBaranyi/El-Pollo-Loco" target="_blank" class="btn btn-outline-green">GitHub</a>
+                                <a href="https://polloloco.adambaranyi.xyz" target="_blank" class="btn btn-filled-green" data-i18n="btn_live">Live Test</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card new-layout">
+                        <div class="project-info">
+                            <div class="project-header">
+                                <span class="project-number">3</span>
+                                <h3>Project Pokedex</h3>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_about">About the project</h4>
+                                    <p data-i18n="proj_poke_desc">Development of a Pokémon trainer register. I utilized HTML, CSS, JS, and REST APIs to fetch Pokémon characteristics and ensure system compatibility.</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_tech">Technologies I have used</h4>
+                                    <p class="tech-stack-text">JavaScript, HTML, CSS, REST API</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4 data-i18n="proj_learned">What I have learned</h4>
+                                    <p data-i18n="proj_poke_learned">I learned how to handle asynchronous API calls and render data dynamically in the DOM, as well as overcoming the challenges of structuring external data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-visuals">
+                            <div class="project-image-new">
+                                <img src="./assets/img/Pokedex1x.webp" alt="Pokedex Preview" loading="lazy">
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/AdamBaranyi/pokedex" target="_blank" class="btn btn-outline-green">GitHub</a>
+                                <a href="https://pokedex.adambaranyi.xyz" target="_blank" class="btn btn-filled-green" data-i18n="btn_live">Live Test</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <a href="#contact" class="scroll-arrow" aria-label="Scroll right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="panel">
+            <div class="section-content flex-row contact-layout">
+                <h2 class="section-title vertical-text" data-i18n="contact_title">Contact me</h2>
+
+                <!-- Form column (Mitte Desktop / unten Mobile) -->
+                <div class="contact-form-col">
+                    <form id="contact-form" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                            <span class="error-msg" id="name-error" data-i18n="error_name">Please enter your name</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder="Your email">
+                            <span class="error-msg" id="email-error" data-i18n="error_email">Please enter a valid email address</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" required placeholder="Your message" rows="5"></textarea>
+                            <span class="error-msg" id="message-error" data-i18n="error_message">Please enter your message</span>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">
+                                <span data-i18n="privacy_consent_1">I've read the</span>
+                                <a href="htmls/legal.html" data-i18n="privacy_policy">privacy policy</a>
+                                <span data-i18n="privacy_consent_2">and agree to the processing of my data.</span>
+                            </label>
+                            <span class="error-msg" id="privacy-error" data-i18n="error_privacy">Please accept the privacy policy</span>
+                        </div>
+                        <div id="submit-success" class="submit-success hidden">
+                            <span data-i18n="success_message">Message sent successfully!</span>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn btn-primary" disabled>
+                            <span data-i18n="btn_send">Send message</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Text column (rechts Desktop / oben Mobile) -->
+                <div class="contact-text-col">
+                    <h3 data-i18n="contact_subtitle">Let's work together</h3>
+                    <p data-i18n="contact_text">Got a problem to solve? Contact me through this form, I am interested in hearing from you, knowing your ideas and contributing to your projects with my work.</p>
+                    <p data-i18n="contact_text_2">Need a Frontend developer? <strong>Contact me!</strong></p>
+                    <div class="contact-info-details">
+                        <a href="mailto:baranyiadam27@icloud.com" class="contact-info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>E-Mail: baranyiadam27@icloud.com</span>
+                        </a>
+                        <a href="tel:+41788129989" class="contact-info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>Tel: +41 78 812 99 89</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Footer Links -->
+            <div class="footer-links">
+                <span class="copyright">&copy; Adam Baranyi <span id="current-year">2026</span></span>
+                <a href="htmls/legal.html" data-i18n="imprint">Imprint</a>
+                <a href="htmls/legal.html" data-i18n="privacy_policy">Privacy policy</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile Footer (nur sichtbar auf Mobile) -->
+    <footer class="mobile-footer">
+        <a href="#hero" class="scroll-to-top" aria-label="Scroll to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        </a>
+        <div class="mobile-footer-socials">
+            <a href="https://github.com/AdamBaranyi" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="mailto:baranyiadam27@icloud.com" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/adam-baranyi123" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+        </div>
+        <div class="mobile-footer-bar">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 120 120" class="logo-text-svg">
+                    <path id="footer-text-curve" d="M 15,75 A 45,45 0 0,1 105,75" fill="none" />
+                    <text class="curved-text">
+                        <textPath href="#footer-text-curve" startOffset="50%" text-anchor="middle">frontend developer</textPath>
+                    </text>
+                </svg>
+                <span class="logo-initials">AB</span>
+            </div>
+            <span class="copyright">&copy; Adam Baranyi <span id="footer-year">2026</span></span>
+            <nav class="mobile-footer-links">
+                <a href="htmls/legal.html" data-i18n="imprint">Legal notice</a>
+                <a href="htmls/legal.html" data-i18n="privacy_policy">Privacy policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/translations.js"></script>
+    <script src="script.js"></script>
+    <script src="scripts/contact.js"></script>
+</body>
+</html>

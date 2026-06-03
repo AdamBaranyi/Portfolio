@@ -1,0 +1,40 @@
+/* Why Me Section */
+#why-me .text-content {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: 20%;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 500px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.skill-item img {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 0 5px rgba(182, 232, 40, 0.3));
+    transition: transform 0.3s;
+}
+
+.skill-item:hover img {
+    transform: scale(1.1);
+}
+
+.skills-text {
+    max-width: 400px;
+}

@@ -1,0 +1,330 @@
+/* ── Contact Layout ──────────────────────────── */
+.contact-layout {
+    align-items: center;
+    gap: 50px;
+}
+
+/* Form column — Mitte auf Desktop */
+.contact-form-col {
+    flex: 1.2;
+    max-width: 460px;
+}
+
+/* Text column — rechts auf Desktop */
+.contact-text-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.contact-text-col h3 {
+    color: var(--text-color);
+}
+
+.contact-text-col p {
+    text-align: right;
+}
+
+/* ── Contact Info (Email / Tel) ──────────────── */
+.contact-info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: filter 0.3s;
+}
+
+.contact-info-item:hover {
+    filter: brightness(1.2);
+    color: var(--primary-color);
+}
+
+.contact-info-item svg {
+    flex-shrink: 0;
+}
+
+/* ── Form ────────────────────────────────────── */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* Rounded border inputs */
+input[type="text"],
+input[type="email"],
+textarea {
+    background-color: transparent;
+    border: 1.5px solid rgba(182, 232, 40, 0.3);
+    border-radius: 30px;
+    color: var(--text-color);
+    padding: 14px 20px;
+    width: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+textarea {
+    border-radius: 16px;
+    resize: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Autofill fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0d0d0d inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Error states */
+.error-msg {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.form-group.error input[type="text"],
+.form-group.error input[type="email"],
+.form-group.error textarea {
+    border-color: var(--error-color);
+}
+
+.form-group.error .error-msg {
+    opacity: 1;
+}
+
+.form-group.success input[type="text"],
+.form-group.success input[type="email"],
+.form-group.success textarea {
+    border-color: var(--primary-color);
+}
+
+/* Checkbox */
+.checkbox-group {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    padding-bottom: 30px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-top: 4px;
+    accent-color: var(--primary-color);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+
+.checkbox-group label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.checkbox-group a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Success message */
+.submit-success {
+    color: var(--primary-color);
+    padding: 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ── Desktop: grüner Streifen rechts (spiegelt Sidebar) ── */
+#contact {
+    padding-right: calc(var(--sidebar-width) + 40px);
+    overflow: hidden;
+}
+
+#contact::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background-color: var(--primary-color);
+}
+
+/* ── Desktop Footer Links ────────────────────── */
+.footer-links {
+    position: absolute;
+    bottom: 40px;
+    right: calc(var(--sidebar-width) + 30px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    z-index: 1;
+}
+
+.footer-links a,
+.footer-links .copyright {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ── Mobile Footer ───────────────────────────── */
+.mobile-footer {
+    display: none; /* nur auf Mobile */
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 20px 0;
+    background-color: var(--bg-color);
+}
+
+.scroll-to-top {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-4px);
+    color: var(--primary-color);
+}
+
+.mobile-footer-socials {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.mobile-footer-socials a {
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.mobile-footer-socials a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-footer-bar {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 24px;
+    gap: 10px;
+    border-radius: 20px 20px 0 0;
+}
+
+.mobile-footer-bar .logo-wrapper {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-footer-bar .logo-text-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.mobile-footer-bar .logo-initials {
+    font-family: 'Quantico', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 2px #000;
+    margin-top: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.mobile-footer-bar .curved-text {
+    font-size: 13px;
+    fill: #000;
+}
+
+.mobile-footer-bar .copyright {
+    font-size: 0.9rem;
+    color: #000;
+    font-weight: 500;
+}
+
+.mobile-footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.mobile-footer-links a {
+    color: #000;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.mobile-footer-links a:hover {
+    color: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Notice - Adam Baranyi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* Specific overrides for legal page */
+        body {
+            overflow-y: auto; /* Always allow vertical scrolling on legal page */
+            overflow-x: hidden;
+        }
+
+        .legal-container {
+            padding: 80px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .legal-content h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .legal-content h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .legal-content p, .legal-content li {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            z-index: 100;
+        }
+
+        .legal-lang {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 800px) {
+            .legal-container {
+                padding: 100px 5% 40px 5%;
+            }
+
+            .back-btn {
+                top: 20px;
+                left: 20px;
+            }
+
+            .legal-lang {
+                top: 24px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="btn btn-outline back-btn" data-i18n="back_btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Portfolio
+    </a>
+
+    <div class="legal-lang">
+        <span id="lang-de" class="lang-btn">DE</span> | <span id="lang-en" class="lang-btn active">EN</span>
+    </div>
+
+    <div class="legal-container">
+        <h1 class="section-title" data-i18n="legal_main_title">Legal Notice &amp; Privacy Policy</h1>
+
+        <div class="legal-content">
+            <h2 data-i18n="imprint_heading">Imprint</h2>
+            <p><strong>Adam Baranyi</strong><br>
+            Luzernerstrasse 141G<br>
+            6014 Luzern<br>
+            Switzerland</p>
+
+            <p><strong data-i18n="contact_label">Contact:</strong><br>
+            <span data-i18n="email_label">Email:</span> <a href="mailto:baranyiadam27@icloud.com" style="color:var(--primary-color);">baranyiadam27@icloud.com</a><br>
+            <span data-i18n="phone_label">Phone:</span> +41 78 812 99 89</p>
+
+            <h2 data-i18n="privacy_heading">Privacy Policy</h2>
+            <h3 data-i18n="pp_1_title">1. An overview of data protection</h3>
+            <h4 data-i18n="pp_general_info">General information</h4>
+            <p data-i18n="pp_general_info_text">The following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website. The term "personal data" comprises all data that can be used to personally identify you. For detailed information about the subject matter of data protection, please consult our Data Protection Declaration, which we have included beneath this copy.</p>
+
+            <h4 data-i18n="pp_data_recording">Data recording on this website</h4>
+            <p data-i18n="pp_controller">Who is the responsible party for the recording of data on this website (i.e., the "controller")?<br>
+            The data on this website is processed by the operator of the website, whose contact information is available under the "Imprint" section in this Privacy Policy.</p>
+
+            <p data-i18n="pp_how_record">How do we record your data?<br>
+            We collect your data as a result of your sharing of your data with us. This may, for instance, be information you enter into our contact form.</p>
+
+            <p data-i18n="pp_other_data">Other data shall be recorded by our IT systems automatically or after you consent to its recording during your website visit. This data comprises primarily technical information (e.g., web browser, operating system, or time the site was accessed). This information is recorded automatically when you access this website.</p>
+
+            <p data-i18n="pp_purpose">What are the purposes we use your data for?<br>
+            A portion of the information is generated to guarantee the error free provision of the website. Other data may be used to analyze your user patterns.</p>
+
+            <h3 data-i18n="pp_2_title">2. Hosting</h3>
+            <p data-i18n="pp_hosting_intro">We host the content of our website at the following provider:</p>
+            <h4 data-i18n="pp_external_hosting">External Hosting</h4>
+            <p data-i18n="pp_external_hosting_text">This website is hosted externally. The personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.</p>
+
+            <h3 data-i18n="pp_3_title">3. General information and mandatory information</h3>
+            <h4 data-i18n="pp_data_protection">Data protection</h4>
+            <p data-i18n="pp_data_protection_text1">The operators of this website and its pages take the protection of your personal data very seriously. Hence, we handle your personal data as confidential information and in compliance with the statutory data protection regulations and this Data Protection Declaration.</p>
+
+            <p data-i18n="pp_data_protection_text2">Whenever you use this website, a variety of personal information will be collected. Personal data comprises data that can be used to personally identify you. This Data Protection Declaration explains which data we collect as well as the purposes we use this data for. It also explains how, and for which purpose the information is collected.</p>
+
+            <p data-i18n="pp_data_protection_text3">We herewith advise you that the transmission of data via the Internet (i.e., through e-mail communications) may be prone to security gaps. It is not possible to completely protect data against third-party access.</p>
+        </div>
+    </div>
+
+    <script>
+        const legalTranslations = {
+            en: {
+                page_title: "Legal Notice - Adam Baranyi",
+                back_btn: "Back to Portfolio",
+                legal_main_title: "Legal Notice & Privacy Policy",
+                imprint_heading: "Imprint",
+                contact_label: "Contact:",
+                email_label: "Email:",
+                phone_label: "Phone:",
+                privacy_heading: "Privacy Policy",
+                pp_1_title: "1. An overview of data protection",
+                pp_general_info: "General information",
+                pp_general_info_text: "The following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website. The term \"personal data\" comprises all data that can be used to personally identify you. For detailed information about the subject matter of data protection, please consult our Data Protection Declaration, which we have included beneath this copy.",
+                pp_data_recording: "Data recording on this website",
+                pp_controller: "Who is the responsible party for the recording of data on this website (i.e., the \"controller\")?<br>The data on this website is processed by the operator of the website, whose contact information is available under the \"Imprint\" section in this Privacy Policy.",
+                pp_how_record: "How do we record your data?<br>We collect your data as a result of your sharing of your data with us. This may, for instance, be information you enter into our contact form.",
+                pp_other_data: "Other data shall be recorded by our IT systems automatically or after you consent to its recording during your website visit. This data comprises primarily technical information (e.g., web browser, operating system, or time the site was accessed). This information is recorded automatically when you access this website.",
+                pp_purpose: "What are the purposes we use your data for?<br>A portion of the information is generated to guarantee the error free provision of the website. Other data may be used to analyze your user patterns.",
+                pp_2_title: "2. Hosting",
+                pp_hosting_intro: "We host the content of our website at the following provider:",
+                pp_external_hosting: "External Hosting",
+                pp_external_hosting_text: "This website is hosted externally. The personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.",
+                pp_3_title: "3. General information and mandatory information",
+                pp_data_protection: "Data protection",
+                pp_data_protection_text1: "The operators of this website and its pages take the protection of your personal data very seriously. Hence, we handle your personal data as confidential information and in compliance with the statutory data protection regulations and this Data Protection Declaration.",
+                pp_data_protection_text2: "Whenever you use this website, a variety of personal information will be collected. Personal data comprises data that can be used to personally identify you. This Data Protection Declaration explains which data we collect as well as the purposes we use this data for. It also explains how, and for which purpose the information is collected.",
+                pp_data_protection_text3: "We herewith advise you that the transmission of data via the Internet (i.e., through e-mail communications) may be prone to security gaps. It is not possible to completely protect data against third-party access."
+            },
+            de: {
+                page_title: "Impressum & Datenschutz - Adam Baranyi",
+                back_btn: "Zurück zum Portfolio",
+                legal_main_title: "Impressum & Datenschutzerklärung",
+                imprint_heading: "Impressum",
+                contact_label: "Kontakt:",
+                email_label: "E-Mail:",
+                phone_label: "Telefon:",
+                privacy_heading: "Datenschutzerklärung",
+                pp_1_title: "1. Datenschutz auf einen Blick",
+                pp_general_info: "Allgemeine Hinweise",
+                pp_general_info_text: "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.",
+                pp_data_recording: "Datenerfassung auf dieser Website",
+                pp_controller: "Wer ist verantwortlich für die Datenerfassung auf dieser Website?<br>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Impressum\" in dieser Datenschutzerklärung entnehmen.",
+                pp_how_record: "Wie erfassen wir Ihre Daten?<br>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.",
+                pp_other_data: "Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.",
+                pp_purpose: "Wofür nutzen wir Ihre Daten?<br>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.",
+                pp_2_title: "2. Hosting",
+                pp_hosting_intro: "Wir hosten die Inhalte unserer Website bei folgendem Anbieter:",
+                pp_external_hosting: "Externes Hosting",
+                pp_external_hosting_text: "Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten handeln, die über eine Website generiert werden.",
+                pp_3_title: "3. Allgemeine Hinweise und Pflichtinformationen",
+                pp_data_protection: "Datenschutz",
+                pp_data_protection_text1: "Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.",
+                pp_data_protection_text2: "Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.",
+                pp_data_protection_text3: "Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich."
+            }
+        };
+
+        const langDeBtn = document.getElementById('lang-de');
+        const langEnBtn = document.getElementById('lang-en');
+        const elements = document.querySelectorAll('[data-i18n]');
+
+        function setLegalLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.title = legalTranslations[lang].page_title;
+            localStorage.setItem('lang', lang);
+
+            langEnBtn.classList.toggle('active', lang === 'en');
+            langDeBtn.classList.toggle('active', lang === 'de');
+
+            elements.forEach(el => {
+                const value = legalTranslations[lang][el.getAttribute('data-i18n')];
+                if (!value) return;
+                if (value.includes('<')) {
+                    el.innerHTML = value;
+                } else if (el.classList.contains('back-btn')) {
+                    // Keep the SVG arrow, only swap the trailing label
+                    el.lastChild.textContent = ' ' + value;
+                } else {
+                    el.textContent = value;
+                }
+            });
+        }
+
+        langDeBtn.addEventListener('click', () => setLegalLanguage('de'));
+        langEnBtn.addEventListener('click', () => setLegalLanguage('en'));
+
+        setLegalLanguage(localStorage.getItem('lang') || 'en');
+    </script>
+
+</body>
+</html>
