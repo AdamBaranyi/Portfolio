@@ -73,6 +73,10 @@
     padding-left: 10px;
 }
 
+.nav-link:hover {
+    color: #fff;
+}
+
 .nav-link.active {
     font-weight: 700;
 }
