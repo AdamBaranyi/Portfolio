@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Notice - Adam Baranyi</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23b6e828%22>AB</text></svg>">
 
+    <!-- Fonts are self-hosted via @font-face in style.css -->
     <link rel="stylesheet" href="../style.css">
 
     <style>
         /* Specific overrides for legal page */
         body {
-            overflow-y: auto; /* Always allow vertical scrolling on legal page */
+            overflow-y: auto; 
             overflow-x: hidden;
         }
 
@@ -196,6 +196,11 @@
         const langEnBtn = document.getElementById('lang-en');
         const elements = document.querySelectorAll('[data-i18n]');
 
+        /**
+         * Switches the legal page to the given language: updates the document
+         * title, the language buttons and all [data-i18n] elements.
+         * @param {('en'|'de')} lang - Language code to apply.
+         */
         function setLegalLanguage(lang) {
             document.documentElement.lang = lang;
             document.title = legalTranslations[lang].page_title;

@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         privacy: false
     };
 
+    /**
+     * Stores the validity of a field and toggles its error/success styling,
+     * then re-evaluates whether the whole form is valid.
+     * @param {HTMLInputElement|HTMLTextAreaElement} field - The field to validate.
+     * @param {boolean} isValid - Whether the field's current value is valid.
+     */
     function validateField(field, isValid) {
         const formGroup = field.closest('.form-group');
         validity[field.name] = isValid;
@@ -33,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkFormValidity();
     }
 
+    /** Enables the submit button only when all fields (incl. privacy) are valid. */
     function checkFormValidity() {
         const isFormValid = validity.name && validity.email && validity.message && validity.privacy;
         submitBtn.disabled = !isFormValid;

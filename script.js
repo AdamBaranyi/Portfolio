@@ -1,14 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. Language Toggle Logic ---
-    let currentLang = 'en';
     const langEnBtn = document.getElementById('lang-en');
     const langDeBtn = document.getElementById('lang-de');
     const overlayLangEn = document.getElementById('overlay-lang-en');
     const overlayLangDe = document.getElementById('overlay-lang-de');
     const translatableElements = document.querySelectorAll('[data-i18n]');
 
+    /**
+     * Switches the page to the given language: updates the language buttons,
+     * replaces every [data-i18n] text and adjusts the form placeholders.
+     * @param {('en'|'de')} lang - Language code to apply.
+     */
     function setLanguage(lang) {
-        currentLang = lang;
         document.documentElement.lang = lang;
         localStorage.setItem('lang', lang);
 
@@ -60,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlayCloseBtn = document.getElementById('overlay-close-btn');
     const overlayLinks = document.querySelectorAll('.overlay-link');
 
+    /** Opens the mobile navigation overlay and locks background scrolling. */
     function openMenu() {
         mobileNavOverlay.classList.add('active');
         mobileNavOverlay.setAttribute('aria-hidden', 'false');
@@ -67,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
     }
 
+    /** Closes the mobile navigation overlay and restores background scrolling. */
     function closeMenu() {
         mobileNavOverlay.classList.remove('active');
         mobileNavOverlay.setAttribute('aria-hidden', 'true');
@@ -116,6 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.panel');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    /**
+     * Highlights the navigation link of the section currently in view.
+     * Uses horizontal scroll position on desktop and vertical scroll on mobile.
+     */
     function updateActiveNav() {
         let index = sections.length;
 

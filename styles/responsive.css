@@ -42,16 +42,6 @@
         display: none;
     }
 
-    /* Top-Bar in den Header schieben */
-    .top-bar {
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        gap: 16px;
-        z-index: 201;
-    }
-
     /* Top-Bar auf Mobile ausblenden — Hamburger übernimmt */
     .top-bar {
         display: none;
