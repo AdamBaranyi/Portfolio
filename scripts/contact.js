@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMessage = document.getElementById('submit-success');
 
     // Validation patterns
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/;
 
     // State
     const validity = {
