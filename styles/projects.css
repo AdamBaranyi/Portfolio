@@ -23,8 +23,8 @@
 
 /* New Project Card Layout */
 .project-card.new-layout {
-    background-color: rgba(182, 232, 40, 0.05);
-    border: 1px solid rgba(182, 232, 40, 0.2);
+    background-color: rgba(181, 233, 59, 0.05);
+    border: 1px solid rgba(181, 233, 59, 0.2);
     border-radius: 30px;
     padding: 50px;
     width: 850px;
@@ -36,7 +36,7 @@
 
 .project-card.new-layout:hover {
     transform: translateY(-10px);
-    border-color: rgba(182, 232, 40, 0.6);
+    border-color: rgba(181, 233, 59, 0.6);
 }
 
 .new-layout .project-info {
@@ -156,7 +156,8 @@
 }
 
 .btn-outline-green:hover {
-    background: rgba(182, 232, 40, 0.1);
+    background-color: var(--primary-color);
+    color: #000;
 }
 
 .btn-filled-green {
