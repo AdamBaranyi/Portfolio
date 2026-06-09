@@ -128,15 +128,21 @@
         align-self: center;
     }
 
-    /* Skills */
-    .skills-text {
-        max-width: 100%;
-        text-align: center;
-    }
+ /* Skills */
+.skills-text {
+    max-width: 100%;
+    text-align: center;
+}
 
-   #skills .section-content {
+#skills .section-content {
     align-items: center;
     text-align: center;
+}
+
+#skills .section-title {
+    width: 100%;
+    align-self: flex-start;
+    text-align: left;
 }
 
 .skills-grid {
@@ -144,6 +150,7 @@
     max-width: 360px;
     margin: 0 auto;
     justify-items: center;
+    align-self: center;
 }
 
     /* Hero: Column-Stack damit Bild hinter Text liegt */
