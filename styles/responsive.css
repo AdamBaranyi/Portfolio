@@ -103,15 +103,29 @@
         font-size: 2.5rem;
         letter-spacing: 1px;
         white-space: normal;
-        color: var(--primary-color);
-        -webkit-text-stroke: 0;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--primary-color);
     }
 
     /* Why Me */
-    #why-me .text-content {
-        margin-left: 0;
-        margin-right: 0;
+    .why-me-body {
+        align-items: center;
         max-width: 100%;
+    }
+
+    .why-me-intro,
+    .why-me-iam {
+        text-align: center;
+    }
+
+    .why-me-points {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .why-me-contact {
+        align-self: center;
     }
 
     /* Skills */
@@ -121,7 +135,7 @@
     }
 
     #skills .section-content {
-        align-items: center;
+        align-items: flex-start;
     }
 
     /* Hero: Column-Stack damit Bild hinter Text liegt */
@@ -260,8 +274,8 @@
     .section-title.vertical-text {
         font-size: 2rem;
         letter-spacing: 0;
-        color: var(--primary-color);
-        -webkit-text-stroke: 0;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--primary-color);
     }
 
     /* Hero */
@@ -350,8 +364,8 @@
     .section-title.vertical-text {
         font-size: 1.8rem;
         margin-bottom: 10px;
-        color: var(--primary-color);
-        -webkit-text-stroke: 0;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--primary-color);
     }
 
     /* Hero */

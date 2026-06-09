@@ -191,10 +191,10 @@
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     color: transparent;
-    -webkit-text-stroke: 1px var(--primary-color);
-    font-size: clamp(4rem, 8vw, 8rem);
+    -webkit-text-stroke: 3px var(--primary-color);
+    font-size: 54px;
     margin-right: 40px;
-    letter-spacing: 5px;
+    letter-spacing: 0;
     white-space: nowrap;
 }
 
