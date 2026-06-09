@@ -162,20 +162,9 @@
         mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     }
 
-    /* Scroll-Pfeil: über Bild (z-index) und nach unten zeigen */
+    /* Scroll-Pfeile auf Mobile ausblenden — vertikales Scrollen braucht sie nicht */
     .scroll-arrow {
-        position: relative;
-        align-self: center;
-        margin-top: 20px;
-        transform: rotate(90deg);
-        animation: bounceDown 2s infinite;
-        z-index: 3;
-    }
-
-    @keyframes bounceDown {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(90deg); }
-        40% { transform: translateY(10px) rotate(90deg); }
-        60% { transform: translateY(5px) rotate(90deg); }
+        display: none;
     }
 
     /* Projekt-Cards */
