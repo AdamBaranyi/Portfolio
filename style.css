@@ -9,7 +9,7 @@
 
 /* Global Variables */
 :root {
-    --primary-color: #b6e828;
+    --primary-color: #b5e93b;
     --bg-color: #0d0d0d;
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
@@ -20,76 +20,17 @@
     --transition-speed: 0.3s;
 }
 
+/* Quantico — alle Schriften (Body, Headings, UI) */
+@font-face {
+    font-family: 'Quantico';
+    src: url('./assets/fonts/Quantico-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
 @font-face {
     font-family: 'Quantico';
     src: url('./assets/fonts/Quantico-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Outfit — body & UI text */
-@font-face {
-    font-family: 'Outfit';
-    src: url('./assets/fonts/Outfit-300.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Outfit';
-    src: url('./assets/fonts/Outfit-400.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Outfit';
-    src: url('./assets/fonts/Outfit-500.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Outfit';
-    src: url('./assets/fonts/Outfit-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Outfit';
-    src: url('./assets/fonts/Outfit-700.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Overpass — headings */
-@font-face {
-    font-family: 'Overpass';
-    src: url('./assets/fonts/Overpass-300.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Overpass';
-    src: url('./assets/fonts/Overpass-400.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Overpass';
-    src: url('./assets/fonts/Overpass-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Overpass';
-    src: url('./assets/fonts/Overpass-700.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -103,7 +44,7 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Quantico', sans-serif;
     background: linear-gradient(to right, #131313 0%, #101010 50%, #0d0d0d 100%);
     background-attachment: fixed;
     color: var(--text-color);
@@ -117,7 +58,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Overpass', sans-serif;
+    font-family: 'Quantico', sans-serif;
     font-weight: 700;
 }
 
@@ -141,7 +82,7 @@ a:hover {
     cursor: pointer;
     transition: all var(--transition-speed);
     gap: 10px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Quantico', sans-serif;
 }
 
 .btn-primary {
