@@ -122,27 +122,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
 
     /**
-     * Highlights the navigation link of the section currently in view.
-     * Uses horizontal scroll position on desktop and vertical scroll on mobile.
-     */
-    function updateActiveNav() {
-        let index = sections.length;
+ * Highlights the navigation link of the section currently in view.
+ * Uses horizontal scroll position on desktop and vertical scroll on mobile.
+ */
+function updateActiveNav() {
+    let activeSectionId = '';
 
-        if (isDesktop) {
-            let scrollPos = scrollWrapper.scrollLeft;
-            while (--index && scrollPos + (scrollWrapper.clientWidth / 2) < sections[index].offsetLeft - sections[0].offsetLeft) {}
-        } else {
-            let scrollPos = window.scrollY;
-            while (--index && scrollPos + (window.innerHeight / 2) < sections[index].offsetTop) {}
-        }
+    if (isDesktop) {
+        const viewportCenter = scrollWrapper.scrollLeft + scrollWrapper.clientWidth / 2;
 
-        navLinks.forEach((link) => link.classList.remove('active'));
-        if (index >= 0 && index < navLinks.length) {
-            const activeSectionId = sections[index].id;
-            const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
-            if (activeLink) activeLink.classList.add('active');
+        sections.forEach(section => {
+            const sectionStart = section.offsetLeft - sections[0].offsetLeft;
+            const sectionEnd = sectionStart + section.offsetWidth;
+
+            if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
+                activeSectionId = section.id;
+            }
+        });
+
+        const isAtEnd = scrollWrapper.scrollLeft + scrollWrapper.clientWidth >= scrollWrapper.scrollWidth - 5;
+
+        if (isAtEnd) {
+            activeSectionId = sections[sections.length - 1].id;
         }
+    } else {
+        const viewportCenter = window.scrollY + window.innerHeight / 2;
+
+        sections.forEach(section => {
+            const sectionStart = section.offsetTop;
+            const sectionEnd = sectionStart + section.offsetHeight;
+
+            if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
+                activeSectionId = section.id;
+            }
+        });
     }
+
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
+
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }
+}
 
     scrollWrapper.addEventListener('scroll', updateActiveNav);
     window.addEventListener('scroll', updateActiveNav);

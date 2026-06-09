@@ -134,9 +134,17 @@
         text-align: center;
     }
 
-    #skills .section-content {
-        align-items: flex-start;
-    }
+   #skills .section-content {
+    align-items: center;
+    text-align: center;
+}
+
+.skills-grid {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    justify-items: center;
+}
 
     /* Hero: Column-Stack damit Bild hinter Text liegt */
     .hero-content {
@@ -292,11 +300,14 @@
     }
 
     /* Skills: 3 Spalten */
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        max-width: 100%;
-    }
+   .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    justify-items: center;
+}
 
     /* Projekt-Number und Titel verkleinern */
     .new-layout .project-number {
@@ -403,10 +414,14 @@
     }
 
     /* Skills */
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-    }
+   .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    justify-items: center;
+}
 
     .skill-item img {
         width: 36px;
