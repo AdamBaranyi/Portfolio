@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. Language Toggle Logic ---
+    // 1. Language Toggle Logic
     const langEnBtn = document.getElementById('lang-en');
     const langDeBtn = document.getElementById('lang-de');
     const overlayLangEn = document.getElementById('overlay-lang-en');
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     langDeBtn.addEventListener('click', () => setLanguage('de'));
 
 
-    // --- 2. Hamburger Menu ---
+    // 2. Hamburger Menu
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
     const overlayCloseBtn = document.getElementById('overlay-close-btn');
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 3. Horizontal Scrolling Logic (Desktop only) ---
+    // 3. Horizontal Scrolling Logic (Desktop only) 
     const scrollWrapper = document.querySelector('.horizontal-scroll-wrapper');
     let isDesktop = window.innerWidth > 800;
 
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: false });
 
 
-    // --- 4. Navigation Highlight based on scroll position ---
+    // 4. Navigation Highlight based on scroll position 
     const sections = document.querySelectorAll('.panel');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNav();
 
 
-    // --- 5. Smooth Anchor Scrolling ---
+    // 5. Smooth Anchor Scrolling 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');

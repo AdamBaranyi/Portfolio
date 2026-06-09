@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
         validateField(messageInput, messageInput.value.trim().length > 0);
     });
 
-    // Checkbox doesn't use blur, usually change is better
+    // Validate checkbox when its value changes
     privacyCheckbox.addEventListener('change', () => {
         validateField(privacyCheckbox, privacyCheckbox.checked);
     });
 
-    // Also validate on input once error state is active to clear it quickly
+    // Remove error state while the user corrects the input
     [nameInput, emailInput, messageInput].forEach(input => {
         input.addEventListener('input', () => {
             const formGroup = input.closest('.form-group');
