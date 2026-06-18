@@ -17,12 +17,6 @@
     padding-bottom: 100px;
 }
 
-#skills .section-title {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--primary-color);
-    margin: 0;
-    margin-right: 40px;
-}
 
 .why-me-body {
     display: flex;
@@ -79,7 +73,6 @@
     gap: 50px;
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
 }
 
 .skills-text-top {
