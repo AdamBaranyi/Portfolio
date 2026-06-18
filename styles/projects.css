@@ -19,6 +19,15 @@
     transform-origin: center center;
 }
 
+#my-work .section-content {
+    position: static;
+}
+
+#my-work .scroll-arrow {
+    bottom: 40px;
+    right: 80px;
+}
+
 .project-cards-wrapper {
     display: flex;
     gap: 80px;
