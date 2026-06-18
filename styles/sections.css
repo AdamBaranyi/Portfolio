@@ -1,7 +1,14 @@
 /* Why Me Section */
 .why-me-layout {
-    align-items: flex-start;
-    padding-top: 5vh;
+    align-items: center;
+    padding-top: 0;
+}
+
+#why-me .section-title {
+    align-self: flex-start;
+    margin-top: 5vh;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
 }
 
 .why-me-body {
