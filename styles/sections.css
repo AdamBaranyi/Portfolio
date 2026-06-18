@@ -1,6 +1,7 @@
 /* Why Me Section */
 .why-me-layout {
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 5vh;
 }
 
 .why-me-body {
@@ -49,6 +50,26 @@
 }
 
 /* Skills Section */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+}
+
+.skills-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+}
+
+.challenge-me {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -57,6 +78,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    align-self: flex-end; /* right bottom */
 }
 
 .skill-item {
@@ -70,7 +92,8 @@
 .skill-item img {
     width: 50px;
     height: 50px;
-    filter: drop-shadow(0 0 5px rgba(181, 233, 59, 0.3));
+    /* Approximate #b5e93b */
+    filter: brightness(0) saturate(100%) invert(84%) sepia(26%) saturate(1066%) hue-rotate(33deg) brightness(100%) contrast(92%);
     transition: transform 0.3s;
 }
 
@@ -79,5 +102,6 @@
 }
 
 .skills-text {
-    max-width: 400px;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }

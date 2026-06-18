@@ -15,7 +15,7 @@
     --text-muted: #aaaaaa;
     --error-color: #ff4d4d;
 
-    --sidebar-width: 120px;
+    --sidebar-width: 160px;
     --section-width: 100vw;
     --transition-speed: 0.3s;
 }
@@ -92,8 +92,8 @@ a:hover {
 }
 
 .btn-primary:hover:not(:disabled) {
-    background-color: transparent;
-    color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(181, 233, 59, 0.4);
 }
 
 .btn-primary:disabled {
