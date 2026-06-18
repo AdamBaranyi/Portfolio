@@ -28,6 +28,7 @@
 .contact-text-col p {
     text-align: right;
     color: var(--text-color);
+    max-width: 450px;
 }
 
 /* ── Contact Info (Email / Tel) ──────────────── */
@@ -223,9 +224,10 @@ input:-webkit-autofill:active {
 }
 
 .footer-links a,
-.footer-links .copyright {
+.footer-links .copyright,
+.footer-links .footer-sep {
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 1rem;
 }
 
 .footer-links a:hover {

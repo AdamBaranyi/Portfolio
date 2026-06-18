@@ -12,22 +12,26 @@
     <link rel="stylesheet" href="../style.css">
 
     <style>
-        /* Legal page reuses the main layout but scrolls its content horizontally */
+        .horizontal-scroll-wrapper {
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+        }
+
         .legal-panel {
-            width: max-content;
+            width: calc(100vw - var(--sidebar-width));
             height: 100vh;
             padding: 80px 100px;
             display: flex;
-            align-items: center;
-            gap: 60px;
-            flex-shrink: 0;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+            overflow-y: auto;
         }
 
         .legal-content {
-            height: 72vh;
-            column-width: 440px;
+            columns: 2;
             column-gap: 64px;
-            column-fill: auto;
+            width: 100%;
         }
 
         .legal-content h2 {
@@ -60,6 +64,9 @@
         }
 
         @media (max-width: 800px) {
+            .horizontal-scroll-wrapper {
+                overflow-y: auto !important;
+            }
             .legal-panel {
                 width: 100vw;
                 height: auto;
@@ -68,11 +75,11 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 24px;
+                overflow-y: visible;
             }
 
             .legal-content {
                 height: auto;
-                column-width: auto;
                 columns: 1;
             }
         }
@@ -185,6 +192,10 @@
                 <p data-i18n="pp_data_protection_text2">Whenever you use this website, a variety of personal information will be collected. Personal data comprises data that can be used to personally identify you. This Data Protection Declaration explains which data we collect as well as the purposes we use this data for. It also explains how, and for which purpose the information is collected.</p>
 
                 <p data-i18n="pp_data_protection_text3">We herewith advise you that the transmission of data via the Internet (i.e., through e-mail communications) may be prone to security gaps. It is not possible to completely protect data against third-party access.</p>
+                <br>
+                <p><strong data-i18n="contact_label">Contact:</strong><br>
+                <span data-i18n="email_label">Email:</span> <a href="mailto:baranyiadam27@icloud.com">baranyiadam27@icloud.com</a><br>
+                <span data-i18n="phone_label">Phone:</span> +41 78 812 99 89</p>
             </div>
         </section>
     </main>
@@ -240,6 +251,8 @@
                 nav_contact: "Contact",
                 back_home: "Home",
                 legal_main_title: "Legal Notice",
+                imprint: "Legal Notice",
+                privacy_policy: "Privacy Policy",
                 imprint_heading: "Imprint",
                 contact_label: "Contact:",
                 email_label: "Email:",
@@ -271,6 +284,8 @@
                 nav_contact: "Kontakt",
                 back_home: "Start",
                 legal_main_title: "Impressum",
+                imprint: "Impressum",
+                privacy_policy: "Datenschutz",
                 imprint_heading: "Impressum",
                 contact_label: "Kontakt:",
                 email_label: "E-Mail:",
@@ -354,16 +369,8 @@
                 }
             });
 
-            // Turn vertical wheel into horizontal scroll on desktop
-            const wrapper = document.querySelector('.horizontal-scroll-wrapper');
-            let isDesktop = window.innerWidth > 800;
-            window.addEventListener('resize', () => { isDesktop = window.innerWidth > 800; });
-            window.addEventListener('wheel', (e) => {
-                if (isDesktop && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                    wrapper.scrollBy({ left: e.deltaY, behavior: 'auto' });
-                    e.preventDefault();
-                }
-            }, { passive: false });
+            // Disable horizontal scrolling override for legal page
+            // It is handled by CSS layout now
 
             setLanguage(localStorage.getItem('lang') || 'en');
 
