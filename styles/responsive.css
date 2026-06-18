@@ -22,28 +22,18 @@
         box-shadow: none; /* Ensure no shadow */
     }
 
-    .hamburger-btn span {
-        background-color: #354522; /* Match the dark olive from design */
-    }
-
     .logo-wrapper {
         width: 60px;
         height: 60px;
     }
 
     .logo-text-svg {
-        display: none;
-    }
-
-    .mobile-footer-bar .logo-text-svg {
-        display: block;
+        /* Text is now visible on mobile like desktop */
     }
 
     .logo-initials {
         margin-top: 0;
         font-size: 2.2rem;
-        color: #354522; /* Solid color */
-        -webkit-text-stroke: 0; /* Remove outline */
     }
 
     .nav-links {

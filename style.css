@@ -133,6 +133,10 @@ h3 {
     margin-bottom: 15px;
 }
 
+.hero-location {
+    display: none;
+}
+
 p {
     font-size: 1.1rem;
     line-height: 1.6;
