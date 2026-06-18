@@ -13,6 +13,11 @@
     background: radial-gradient(circle at center, #222222 0%, #000000 70%);
 }
 
+#skills .section-title {
+    align-self: flex-end;
+    margin-bottom: 5vh;
+}
+
 .why-me-body {
     display: flex;
     flex-direction: column;
@@ -62,45 +67,47 @@
 .skills-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
     width: 100%;
 }
 
-.skills-text-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 500px;
+.skills-text-top {
+    max-width: 800px;
 }
 
-.challenge-me {
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: 1.5rem;
+.skills-text-top p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 500px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 50px 60px;
     list-style: none;
     padding: 0;
     margin: 0;
-    align-self: flex-end; /* right bottom */
 }
 
 .skill-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     text-align: center;
 }
 
+.skill-item span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    color: #e0e0e0;
+}
+
 .skill-icon {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     background-color: var(--primary-color);
     -webkit-mask-size: contain;
     -webkit-mask-repeat: no-repeat;
@@ -108,14 +115,52 @@
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
-    transition: transform 0.3s;
+    transition: all 0.3s;
 }
 
 .skill-item:hover .skill-icon {
     transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--primary-color));
 }
 
-.skills-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
+.skill-item:hover span {
+    color: var(--primary-color);
+}
+
+.challenge-box {
+    width: 70px;
+    height: 70px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 700;
+    color: #000;
+    transition: transform 0.3s;
+}
+
+.challenge-box-item:hover .challenge-box {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.challenge-box-item:hover span {
+    color: #ffffff;
+}
+
+.text-block-item {
+    grid-column: 4 / -1;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.challenge-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0;
+    text-align: left;
 }
