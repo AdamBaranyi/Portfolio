@@ -10,11 +10,11 @@
 }
 
 #why-me {
-    background: radial-gradient(circle at center, #222222 0%, #000000 70%);
+    background: radial-gradient(circle at center, #353535 0%, #000000 70%);
 }
 
 #skills {
-    background: radial-gradient(circle at -50% center, #222222 0%, #000000 70%);
+    background: radial-gradient(circle at -50% center, #353535 0%, #000000 70%);
 }
 #skills .section-content {
     align-items: flex-end;

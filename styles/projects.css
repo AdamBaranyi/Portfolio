@@ -3,7 +3,7 @@
     width: max-content;
     min-width: calc(100vw - var(--sidebar-width));
     padding-right: 150px;
-    background: radial-gradient(circle at center, #222222 0%, #000000 70%);
+    background: radial-gradient(circle at center, #353535 0%, #000000 70%);
 }
 
 .projects-container {
