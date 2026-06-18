@@ -13,7 +13,7 @@
     align-items: center;
     padding: 40px 0;
     z-index: 100;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
+    box-shadow: 10px 0 30px rgba(181, 233, 59, 0.15);
 }
 
 .logo-wrapper {

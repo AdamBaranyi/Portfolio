@@ -209,7 +209,7 @@ input:-webkit-autofill:active {
     bottom: 0;
     width: var(--sidebar-width);
     background: linear-gradient(to bottom, var(--primary-color) 0%, #8cb829 100%);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+    box-shadow: -10px 0 30px rgba(181, 233, 59, 0.15);
 }
 
 /* ── Desktop Footer Links ────────────────────── */
