@@ -12,10 +12,22 @@
 #why-me {
     background: radial-gradient(circle at center, #222222 0%, #000000 70%);
 }
+#skills .section-content {
+    align-items: flex-end;
+    padding-bottom: 100px;
+}
 
 #skills .section-title {
-    align-self: flex-end;
-    margin-bottom: 5vh;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--primary-color);
+    margin: 0;
+    margin-right: 40px;
+}
+
+#skills .scroll-arrow {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
 }
 
 .why-me-body {
@@ -67,8 +79,10 @@
 .skills-container {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 50px;
     width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .skills-text-top {
@@ -84,7 +98,7 @@
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 50px 60px;
+    gap: 50px 40px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -106,8 +120,8 @@
 }
 
 .skill-icon-img {
-    width: 70px;
-    height: 70px;
+    width: 85px;
+    height: 85px;
     object-fit: contain;
     transition: all 0.3s;
 }
@@ -126,20 +140,34 @@
     border-radius: 0;
 }
 
-.challenge-box-item:hover .challenge-box {
+.challenge-group {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    text-align: left;
+}
+
+.challenge-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.challenge-text-col {
+    flex: 1;
+}
+
+.challenge-group:hover .challenge-box {
     transform: scale(1.1);
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
 }
 
-.challenge-box-item:hover span {
+.challenge-group:hover .challenge-col span {
     color: #ffffff;
-}
-
-.text-block-item {
-    grid-column: 4 / -1;
-    display: flex;
-    align-items: center;
-    text-align: left;
 }
 
 .challenge-description {
@@ -147,5 +175,4 @@
     line-height: 1.5;
     color: var(--text-muted);
     margin: 0;
-    text-align: left;
 }
