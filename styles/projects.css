@@ -188,9 +188,6 @@
 }
 
 .btn-filled-green:hover {
-    background: linear-gradient(to bottom, #d4f47a 0%, #95c628 100%);
-    color: #f1ffe0;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
 }
