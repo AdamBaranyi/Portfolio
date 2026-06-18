@@ -18,6 +18,12 @@
         flex-direction: row;
         padding: 0 20px;
         justify-content: space-between;
+        background: var(--primary-color); /* Override gradient */
+        box-shadow: none; /* Ensure no shadow */
+    }
+
+    .hamburger-btn span {
+        background-color: #354522; /* Match the dark olive from design */
     }
 
     .logo-wrapper {
@@ -36,6 +42,8 @@
     .logo-initials {
         margin-top: 0;
         font-size: 2.2rem;
+        color: #354522; /* Solid color */
+        -webkit-text-stroke: 0; /* Remove outline */
     }
 
     .nav-links {
