@@ -14,7 +14,7 @@
     .sidebar {
         position: fixed;
         width: 100vw;
-        height: 80px;
+        height: 90px;
         flex-direction: row;
         padding: 0 20px;
         justify-content: space-between;
@@ -23,18 +23,12 @@
     }
 
     .logo-wrapper {
-        width: 60px;
-        height: 60px;
+        width: 110px;
+        height: 110px;
+        margin-top: -10px;
     }
 
-    .logo-text-svg {
-        /* Text is now visible on mobile like desktop */
-    }
 
-    .logo-initials {
-        margin-top: 12px;
-        font-size: 1.8rem;
-    }
 
     .nav-links {
         display: none;
