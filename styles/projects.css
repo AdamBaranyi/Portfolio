@@ -160,29 +160,36 @@
     padding: 10px 25px;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
+    background-color: transparent;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 500;
+    font-family: system-ui, -apple-system, sans-serif;
     transition: all 0.3s;
 }
 
 .btn-outline-green:hover {
-    background-color: var(--primary-color);
+    background: linear-gradient(to bottom, var(--primary-color) 0%, #8cb829 100%);
     color: #000;
+    box-shadow: 0 5px 15px rgba(181, 233, 59, 0.4);
+    transform: translateY(-2px);
 }
 
 .btn-filled-green {
     padding: 12px 25px;
-    background-color: var(--primary-color);
+    background: linear-gradient(to bottom, var(--primary-color) 0%, #8cb829 100%);
     color: #000;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    border: 2px solid var(--primary-color);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-family: system-ui, -apple-system, sans-serif;
     transition: all 0.3s;
 }
 
 .btn-filled-green:hover {
-    filter: brightness(1.1);
-    transform: scale(1.05);
+    filter: brightness(1.15);
+    box-shadow: 0 8px 20px rgba(181, 233, 59, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
