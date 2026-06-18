@@ -105,20 +105,14 @@
     color: #e0e0e0;
 }
 
-.skill-icon {
+.skill-icon-img {
     width: 70px;
     height: 70px;
-    background-color: var(--primary-color);
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
+    object-fit: contain;
     transition: all 0.3s;
 }
 
-.skill-item:hover .skill-icon {
+.skill-item:hover .skill-icon-img {
     transform: scale(1.1);
     filter: drop-shadow(0 0 15px var(--primary-color));
 }
@@ -128,22 +122,13 @@
 }
 
 .challenge-box {
-    width: 70px;
-    height: 70px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    font-weight: 700;
-    color: #000;
-    transition: transform 0.3s;
+    background-color: transparent;
+    border-radius: 0;
 }
 
 .challenge-box-item:hover .challenge-box {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
 }
 
 .challenge-box-item:hover span {
