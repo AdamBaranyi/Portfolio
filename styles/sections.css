@@ -15,6 +15,11 @@
 #skills .section-content {
     align-items: flex-end;
     padding-bottom: 100px;
+    gap: 30px; /* Reduce gap to title */
+}
+
+#skills .section-title {
+    margin-right: 0; /* Remove right margin to bring it even closer */
 }
 
 

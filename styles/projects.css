@@ -8,6 +8,15 @@
 
 .projects-container {
     width: max-content;
+    height: fit-content;
+    align-items: flex-start;
+    gap: 30px; /* Reduce gap to pull them closer */
+}
+
+#my-work .section-title {
+    margin-right: 0;
+    margin-top: 0;
+    transform-origin: center center;
 }
 
 .project-cards-wrapper {
