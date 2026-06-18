@@ -8,6 +8,10 @@
     position: relative;
 }
 
+#hero .scroll-arrow {
+    bottom: calc(50% - 20px);
+}
+
 .hero-image {
     position: absolute;
     bottom: 0;

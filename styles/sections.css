@@ -24,12 +24,6 @@
     margin-right: 40px;
 }
 
-#skills .scroll-arrow {
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-}
-
 .why-me-body {
     display: flex;
     flex-direction: column;
@@ -76,6 +70,9 @@
 }
 
 /* Skills Section */
+#skills .scroll-arrow {
+    bottom: calc(50% - 20px);
+}
 .skills-container {
     display: flex;
     flex-direction: column;
