@@ -208,7 +208,7 @@ input:-webkit-autofill:active {
     top: 0;
     bottom: 0;
     width: var(--sidebar-width);
-    background-color: var(--primary-color);
+    background: linear-gradient(to bottom, var(--primary-color) 0%, #8cb829 100%);
 }
 
 /* ── Desktop Footer Links ────────────────────── */

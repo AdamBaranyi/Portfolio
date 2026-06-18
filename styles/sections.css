@@ -89,15 +89,20 @@
     text-align: center;
 }
 
-.skill-item img {
+.skill-icon {
     width: 50px;
     height: 50px;
-    /* Approximate #b5e93b */
-    filter: brightness(0) saturate(100%) invert(84%) sepia(26%) saturate(1066%) hue-rotate(33deg) brightness(100%) contrast(92%);
+    background-color: var(--primary-color);
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
     transition: transform 0.3s;
 }
 
-.skill-item:hover img {
+.skill-item:hover .skill-icon {
     transform: scale(1.1);
 }
 
