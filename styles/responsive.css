@@ -164,6 +164,9 @@
     }
 
     .hero-image {
+        position: relative;
+        left: auto;
+        transform: none;
         order: 1; /* Picture first */
         width: 100%;
         height: 55vh;
