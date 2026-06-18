@@ -7,8 +7,10 @@
 #why-me .section-title {
     align-self: flex-start;
     margin-top: 5vh;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+}
+
+#why-me {
+    background: radial-gradient(circle at center, #222222 0%, #000000 70%);
 }
 
 .why-me-body {
