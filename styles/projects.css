@@ -27,7 +27,7 @@
     border: 1px solid rgba(181, 233, 59, 0.2);
     border-radius: 30px;
     padding: 50px;
-    width: 850px;
+    width: 950px;
     display: flex;
     flex-direction: row;
     gap: 50px;
@@ -67,6 +67,7 @@
     font-size: 54px;
     color: var(--primary-color);
     margin: 0;
+    white-space: nowrap;
 }
 
 .new-layout .project-details {
