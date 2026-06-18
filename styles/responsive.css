@@ -153,39 +153,65 @@
     align-self: center;
 }
 
-    /* Hero: Column-Stack damit Bild hinter Text liegt */
+    /* Hero: Column-Stack */
     .hero-content {
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        height: 100%;
+        padding-bottom: 40px;
+    }
+
+    .hero-image {
+        order: 1; /* Picture first */
+        width: 100%;
+        height: 55vh;
+        margin-bottom: 20px;
     }
 
     .hero-text {
+        order: 2; /* Text second */
         width: 100%;
-        margin-top: 8vh;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 5px;
+    }
+
+    .hero-text h2 {
+        order: 1; /* Frontend Developer */
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        -webkit-text-stroke: 0;
+        color: var(--primary-color);
+        margin: 0;
+    }
+
+    .hero-text h1 {
+        order: 2; /* Adam Baranyi */
+        font-size: 3.5rem;
+        color: var(--primary-color);
+        line-height: 1.1;
+        margin: 0;
+    }
+
+    .hero-text h3.hero-location {
+        order: 3; /* Luzern */
+        display: block;
+        font-size: 1.2rem;
+        color: #ffffff;
+        font-weight: 400;
+        margin: 0;
+        margin-top: 5px;
     }
 
     .image-placeholder {
         display: flex;
         justify-content: center;
         align-items: flex-end;
-    }
-
-    .hero-text h1 {
-        font-size: 3rem;
-    }
-
-    /* h2 bleibt Umriss-Text — gut lesbar über dem Bild */
-    .hero-text h2 {
-        font-size: 2.2rem;
-        -webkit-text-stroke: 1.5px var(--primary-color);
-    }
-
-    .hero-image {
-        width: 100%;
-        height: 65vh;
     }
 
     /* Scroll-Pfeile auf Mobile ausblenden — vertikales Scrollen braucht sie nicht */
