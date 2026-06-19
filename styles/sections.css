@@ -151,7 +151,7 @@
     grid-column: span 2;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start; /* Aligns the icon to the top of the grid row */
     gap: 30px;
     text-align: left;
 }
@@ -166,6 +166,7 @@
 
 .challenge-text-col {
     flex: 1;
+    margin-top: 5px; /* Pushes text down slightly to align beautifully with the icon */
 }
 
 .challenge-group:hover .challenge-box {

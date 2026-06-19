@@ -3,8 +3,8 @@
    Breakpoints: 800px → 480px → 360px (320px)
    ============================================= */
 
-/* ── 800px: Tablet & alle Handys ─────────────── */
-@media (max-width: 800px) {
+/* ── 1100px: Tablet & alle Handys ─────────────── */
+@media (max-width: 1100px) {
     body {
         overflow-x: hidden;
         overflow-y: auto;
@@ -147,8 +147,10 @@
 
 .skills-grid {
     width: 100%;
-    max-width: 360px;
+    max-width: 600px;
     margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 20px;
     justify-items: center;
     align-self: center;
 }
@@ -340,6 +342,11 @@
     max-width: 320px;
     margin: 0 auto;
     justify-items: center;
+}
+
+.skill-icon-img {
+    width: 70px; /* Smaller icons to fit 3 columns on 320px screens */
+    height: 70px;
 }
 
     /* Projekt-Number und Titel verkleinern */
