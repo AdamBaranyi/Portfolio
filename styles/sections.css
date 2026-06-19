@@ -21,13 +21,17 @@
     background: radial-gradient(circle 50vw at -50% center, #353535 0%, rgba(53, 53, 53, 0) 100%);
 }
 #skills .section-content {
-    align-items: flex-end;
-    padding-bottom: 100px;
-    gap: 30px; /* Reduce gap to title */
+    align-items: flex-start; /* Align title and content exactly at their top edges */
+    justify-content: flex-start; /* Start from the left */
+    padding-top: 45vh; /* Push down to the bottom left */
+    padding-left: 4vw; /* Distance from the sidebar - moved further left */
+    gap: 80px; /* Same gap as "Why me" section */
 }
 
 #skills .section-title {
-    margin-right: 0; /* Remove right margin to bring it even closer */
+    align-self: flex-start;
+    margin-top: 0;
+    margin-right: 0;
 }
 
 

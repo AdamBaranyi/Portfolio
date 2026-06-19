@@ -135,6 +135,8 @@
 #skills .section-content {
     align-items: center;
     text-align: center;
+    padding-left: 0;
+    padding-top: 0;
 }
 
 #skills .section-title {
@@ -183,7 +185,7 @@
 
     .hero-text h2 {
         order: 1; /* Frontend Developer */
-        font-size: 1.4rem;
+        font-size: clamp(24px, 8px + 5vw, 48px);
         text-transform: uppercase;
         letter-spacing: 1px;
         -webkit-text-stroke: 0;
@@ -193,7 +195,7 @@
 
     .hero-text h1 {
         order: 2; /* Adam Baranyi */
-        font-size: 3.5rem;
+        font-size: clamp(40px, 24px + 5vw, 64px);
         color: var(--primary-color);
         line-height: 1.1;
         margin: 0;
