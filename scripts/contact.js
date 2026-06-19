@@ -80,58 +80,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /**
-     * Handles the form submission via fetch. 
-     * Prevents default reload, sends data to PHP script, and shows success message.
-     * 
-     * @param {Event} e - The submit event triggered by the form.
+     * Resets form validation state and UI classes.
+     * @returns {void}
+     */
+    function resetFormState() {
+        form.reset();
+        ['name', 'email', 'message'].forEach(id => {
+            const el = document.getElementById(id);
+            const group = el.closest('.form-group');
+            group.classList.remove('success', 'error');
+        });
+        validity.name = validity.email = validity.message = validity.privacy = false;
+        checkFormValidity();
+    }
+
+    /**
+     * Shows success message and resets submit button.
+     * @returns {void}
+     */
+    function handleSuccess() {
+        resetFormState();
+        submitBtn.innerHTML = `<span data-i18n="btn_send">Send message</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>`;
+        const activeLangBtn = document.querySelector('.lang-btn.active');
+        if (activeLangBtn) activeLangBtn.click();
+        successMessage.classList.remove('hidden');
+        setTimeout(() => successMessage.classList.add('hidden'), 5000);
+    }
+
+    /**
+     * Handles the form submission via fetch.
+     * @param {Event} e - Submit event.
      * @returns {Promise<void>}
      */
-    form.addEventListener('submit', async (e) => {
+    async function submitForm(e) {
         e.preventDefault();
-        
         if (submitBtn.disabled) return;
-
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Sending...';
-
         try {
-            const response = await fetch('contact.php', {
-                method: 'POST',
-                body: new FormData(form)
-            });
-
-            if (!response.ok) throw new Error('Request failed');
-
-            form.reset();
-
-            ['name', 'email', 'message'].forEach(id => {
-                const el = document.getElementById(id);
-                const group = el.closest('.form-group');
-                group.classList.remove('success');
-                group.classList.remove('error');
-            });
-            validity.name = false;
-            validity.email = false;
-            validity.message = false;
-            validity.privacy = false;
-            checkFormValidity();
-
-            // restore button content dynamically
-            submitBtn.innerHTML = `<span data-i18n="btn_send">Send message</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>`;
-            
-            // force re-translation of the button if needed
-            const activeLangBtn = document.querySelector('.lang-btn.active');
-            if (activeLangBtn) activeLangBtn.click();
-
-            successMessage.classList.remove('hidden');
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-            }, 5000);
-
+            const res = await fetch('contact.php', { method: 'POST', body: new FormData(form) });
+            if (!res.ok) throw new Error('Request failed');
+            handleSuccess();
         } catch (error) {
             console.error('Submission error:', error);
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Error. Try again.';
         }
-    });
+    }
+
+    form.addEventListener('submit', submitForm);
 });

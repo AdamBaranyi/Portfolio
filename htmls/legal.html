@@ -539,9 +539,34 @@
             const elements = document.querySelectorAll('[data-i18n]');
 
             /**
+             * Updates language buttons active states.
+             * @param {string} lang - target language
+             * @returns {void}
+             */
+            function updateLangButtons(lang) {
+                const isEn = lang === 'en';
+                langEnBtn.classList.toggle('active', isEn);
+                langDeBtn.classList.toggle('active', !isEn);
+                overlayLangEn.classList.toggle('active', isEn);
+                overlayLangDe.classList.toggle('active', !isEn);
+            }
+
+            /**
+             * Translates legal page elements.
+             * @param {string} lang - target language
+             * @returns {void}
+             */
+            function translateElements(lang) {
+                elements.forEach(el => {
+                    const val = legalTranslations[lang][el.getAttribute('data-i18n')];
+                    if (!val) return;
+                    if (val.includes('<')) el.innerHTML = val;
+                    else el.textContent = val;
+                });
+            }
+
+            /**
              * Applies the selected language across the legal page application.
-             * Updates document title, language buttons and replaces data-i18n text content.
-             * 
              * @param {string} lang - The target language code ('en' or 'de').
              * @returns {void}
              */
@@ -549,21 +574,8 @@
                 document.documentElement.lang = lang;
                 document.title = legalTranslations[lang].page_title;
                 localStorage.setItem('lang', lang);
-
-                langEnBtn.classList.toggle('active', lang === 'en');
-                langDeBtn.classList.toggle('active', lang === 'de');
-                overlayLangEn.classList.toggle('active', lang === 'en');
-                overlayLangDe.classList.toggle('active', lang === 'de');
-
-                elements.forEach(el => {
-                    const value = legalTranslations[lang][el.getAttribute('data-i18n')];
-                    if (!value) return;
-                    if (value.includes('<')) {
-                        el.innerHTML = value;
-                    } else {
-                        el.textContent = value;
-                    }
-                });
+                updateLangButtons(lang);
+                translateElements(lang);
             }
 
             langDeBtn.addEventListener('click', () => setLanguage('de'));

@@ -7,28 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const translatableElements = document.querySelectorAll('[data-i18n]');
 
     /**
-     * Applies the selected language across the entire application.
-     * Updates localStorage, UI active states, text content, and input placeholders.
-     * 
-     * @param {string} lang - The target language code ('en' or 'de').
+     * Updates language buttons active states.
+     * @param {string} lang - target language
      * @returns {void}
      */
-    function setLanguage(lang) {
-        document.documentElement.lang = lang;
-        localStorage.setItem('lang', lang);
+    function updateLangButtons(lang) {
+        const isEn = lang === 'en';
+        langEnBtn.classList.toggle('active', isEn);
+        langDeBtn.classList.toggle('active', !isEn);
+        overlayLangEn.classList.toggle('active', isEn);
+        overlayLangDe.classList.toggle('active', !isEn);
+    }
 
-        if (lang === 'en') {
-            langEnBtn.classList.add('active');
-            langDeBtn.classList.remove('active');
-            overlayLangEn.classList.add('active');
-            overlayLangDe.classList.remove('active');
-        } else {
-            langDeBtn.classList.add('active');
-            langEnBtn.classList.remove('active');
-            overlayLangDe.classList.add('active');
-            overlayLangEn.classList.remove('active');
-        }
-
+    /**
+     * Translates DOM elements with data-i18n attributes.
+     * @param {string} lang - target language
+     * @returns {void}
+     */
+    function translateElements(lang) {
         translatableElements.forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
@@ -39,14 +35,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
 
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const messageInput = document.getElementById('message');
+    /**
+     * Updates form input placeholders based on language.
+     * @param {string} lang - target language
+     * @returns {void}
+     */
+    function updatePlaceholders(lang) {
+        const nameIn = document.getElementById('name');
+        const emailIn = document.getElementById('email');
+        const msgIn = document.getElementById('message');
+        if (nameIn) nameIn.placeholder = lang === 'en' ? 'Your name' : 'Dein Name';
+        if (emailIn) emailIn.placeholder = lang === 'en' ? 'Your email' : 'Deine E-Mail';
+        if (msgIn) msgIn.placeholder = lang === 'en' ? 'Your message' : 'Deine Nachricht';
+    }
 
-        if (nameInput) nameInput.placeholder = lang === 'en' ? 'Your name' : 'Dein Name';
-        if (emailInput) emailInput.placeholder = lang === 'en' ? 'Your email' : 'Deine E-Mail';
-        if (messageInput) messageInput.placeholder = lang === 'en' ? 'Your message' : 'Deine Nachricht';
+    /**
+     * Applies the selected language across the application.
+     * @param {string} lang - The target language code.
+     * @returns {void}
+     */
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        localStorage.setItem('lang', lang);
+        updateLangButtons(lang);
+        translateElements(lang);
+        updatePlaceholders(lang);
     }
 
     langEnBtn.addEventListener('click', () => setLanguage('en'));
@@ -120,40 +135,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
 
     /**
-     * Calculates the current active section based on scroll position
-     * and highlights the corresponding navigation link.
-     * 
+     * Gets the active section ID for desktop.
+     * @returns {string} The active section ID.
+     */
+    function getActiveDesktopSection() {
+        const center = scrollWrapper.scrollLeft + scrollWrapper.clientWidth / 2;
+        let id = '';
+        sections.forEach(sec => {
+            const start = sec.offsetLeft - sections[0].offsetLeft;
+            if (center >= start && center < start + sec.offsetWidth) id = sec.id;
+        });
+        const isAtEnd = scrollWrapper.scrollLeft + scrollWrapper.clientWidth >= scrollWrapper.scrollWidth - 5;
+        return isAtEnd ? sections[sections.length - 1].id : id;
+    }
+
+    /**
+     * Gets the active section ID for mobile.
+     * @returns {string} The active section ID.
+     */
+    function getActiveMobileSection() {
+        const center = window.scrollY + window.innerHeight / 2;
+        let id = '';
+        sections.forEach(sec => {
+            const start = sec.offsetTop;
+            if (center >= start && center < start + sec.offsetHeight) id = sec.id;
+        });
+        return id;
+    }
+
+    /**
+     * Highlights the active navigation link.
+     * @param {string} id - Active section ID.
+     * @returns {void}
+     */
+    function highlightNavLink(id) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+    }
+
+    /**
+     * Calculates active section based on scroll position and highlights it.
      * @returns {void}
      */
     function updateActiveNav() {
-        let activeSectionId = '';
-
-        if (isDesktop) {
-            const viewportCenter = scrollWrapper.scrollLeft + scrollWrapper.clientWidth / 2;
-            sections.forEach(section => {
-                const sectionStart = section.offsetLeft - sections[0].offsetLeft;
-                const sectionEnd = sectionStart + section.offsetWidth;
-                if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
-                    activeSectionId = section.id;
-                }
-            });
-
-            const isAtEnd = scrollWrapper.scrollLeft + scrollWrapper.clientWidth >= scrollWrapper.scrollWidth - 5;
-            if (isAtEnd) activeSectionId = sections[sections.length - 1].id;
-        } else {
-            const viewportCenter = window.scrollY + window.innerHeight / 2;
-            sections.forEach(section => {
-                const sectionStart = section.offsetTop;
-                const sectionEnd = sectionStart + section.offsetHeight;
-                if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
-                    activeSectionId = section.id;
-                }
-            });
-        }
-
-        navLinks.forEach(link => link.classList.remove('active'));
-        const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
-        if (activeLink) activeLink.classList.add('active');
+        const activeId = isDesktop ? getActiveDesktopSection() : getActiveMobileSection();
+        highlightNavLink(activeId);
     }
 
     scrollWrapper.addEventListener('scroll', updateActiveNav);
@@ -162,27 +189,29 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNav();
 
 
+    /**
+     * Performs smooth scrolling to a target element.
+     * @param {HTMLElement} target - The target element to scroll to.
+     * @returns {void}
+     */
+    function scrollToTarget(target) {
+        if (isDesktop) {
+            const scrollTarget = target.offsetLeft - sections[0].offsetLeft;
+            scrollWrapper.scrollTo({ top: 0, left: scrollTarget, behavior: 'smooth' });
+        } else {
+            window.scrollTo({ top: target.offsetTop - 80, left: 0, behavior: 'smooth' });
+        }
+    }
+
     // --- 5. Smooth Anchor Scrolling ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-
             const targetElement = document.querySelector(targetId);
             if (!targetElement) return;
-
             e.preventDefault();
-
-            if (isDesktop) {
-                const scrollTarget = targetElement.offsetLeft - sections[0].offsetLeft;
-                scrollWrapper.scrollTo({ top: 0, left: scrollTarget, behavior: 'smooth' });
-            } else {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    left: 0,
-                    behavior: 'smooth'
-                });
-            }
+            scrollToTarget(targetElement);
         });
     });
 
