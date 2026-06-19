@@ -8,79 +8,151 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23b5e93b%22>AB</text></svg>">
 
-    <!-- Fonts are self-hosted via @font-face in style.css -->
     <link rel="stylesheet" href="../style.css">
 
     <style>
-        .horizontal-scroll-wrapper {
-            overflow-x: hidden !important;
-            overflow-y: hidden !important;
+        /* The horizontal scroll wrapper and panel use default layout.css styles now */
+        .legal-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding-top: 15vh;
+            padding-left: 5vw;
+            padding-right: 5vw;
+            gap: 60px;
+            width: 100%;
+            height: 100%;
         }
 
-        .legal-panel {
-            width: calc(100vw - var(--sidebar-width));
-            height: 100vh;
-            padding: 80px 100px;
+        .scroll-arrow {
+            top: 50%;
+            transform: translateY(-50%);
+            right: 5vw;
+            bottom: auto; /* override layout.css bottom: 40px */
+        }
+
+        .scroll-arrow.left-arrow {
+            right: calc(var(--sidebar-width) + 45px);
+        }
+
+        /* Right green sidebar on the last page */
+        #page2::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: var(--sidebar-width);
+            background: 
+                linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 20px),
+                linear-gradient(to bottom, var(--primary-color) 0%, #8cb829 100%);
+        }
+
+        .legal-body {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 40px;
-            overflow-y: auto;
-        }
-
-        .legal-content {
-            columns: 2;
-            column-gap: 64px;
             width: 100%;
+            max-width: 800px;
         }
 
-        .legal-content h2 {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin: 0 0 16px;
+        .legal-body.right-page {
+            max-width: 900px;
+            padding-right: var(--sidebar-width); /* Prevent text overlapping the sidebar */
         }
 
-        .legal-content h3 {
+        .legal-body h2 {
+            display: none; /* Hide standard h2, using vertical text instead */
+        }
+
+        .legal-body h3 {
             font-size: 1.3rem;
-            margin: 28px 0 12px;
-            color: var(--text-color);
+            margin: 0 0 12px;
+            color: var(--primary-color);
         }
 
-        .legal-content h4 {
+        .legal-body h4 {
             font-size: 1.05rem;
-            margin: 16px 0 8px;
-            color: var(--text-color);
+            margin: 20px 0 8px;
+            color: var(--primary-color);
         }
 
-        .legal-content p {
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 14px;
+        .legal-body p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 16px;
             font-size: 0.95rem;
         }
 
-        .legal-content a {
+        .legal-body a {
             color: var(--primary-color);
+            text-decoration: none;
         }
 
-        @media (max-width: 800px) {
+        /* Absolute positioning for Contact and Footer on Right Page */
+        .contact-absolute {
+            position: absolute;
+            top: 6vh;
+            right: calc(var(--sidebar-width) + 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .contact-absolute .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-absolute {
+            position: absolute;
+            bottom: 6vh;
+            right: calc(var(--sidebar-width) + 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 1100px) {
             .horizontal-scroll-wrapper {
-                overflow-y: auto !important;
-            }
-            .legal-panel {
+                flex-direction: column;
                 width: 100vw;
                 height: auto;
-                min-height: 100vh;
-                padding: 100px 20px 40px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 24px;
-                overflow-y: visible;
+                overflow-x: hidden;
+                overflow-y: auto;
+                scroll-snap-type: none;
+                padding-top: 80px;
             }
 
-            .legal-content {
+            .panel {
+                min-width: 100vw;
                 height: auto;
-                columns: 1;
+                min-height: 100vh;
+            }
+
+            .legal-layout {
+                width: 100vw;
+                margin-left: 0;
+                flex-direction: column;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+
+            .contact-absolute, .footer-absolute {
+                position: static;
+                align-items: flex-start;
+                margin-top: 40px;
+            }
+
+            .scroll-arrow {
+                display: none;
             }
         }
     </style>
@@ -91,15 +163,25 @@
     <nav class="sidebar">
         <a href="../index.html" class="logo" aria-label="Go to start">
             <div class="logo-wrapper">
-                <svg viewBox="0 0 120 120" class="logo-text-svg">
-                    <path id="text-curve" d="M 15,75 A 45,45 0 0,1 105,75" fill="none" />
+                <svg viewBox="0 0 120 120" class="logo-text-svg" overflow="visible">
+                    <path
+                      id="text-curve"
+                      d="M 60,100 A 40,40 0 1,1 60,20 A 40,40 0 1,1 60,100"
+                      fill="none"
+                    />
                     <text class="curved-text">
-                        <textPath href="#text-curve" startOffset="50%" text-anchor="middle">
-                            frontend developer
-                        </textPath>
+                      <textPath
+                        href="#text-curve"
+                        startOffset="50%"
+                        text-anchor="middle"
+                      >
+                        frontend developer
+                      </textPath>
+                    </text>
+                    <text x="60" y="66" class="logo-initials-svg" text-anchor="middle" dominant-baseline="middle">
+                      AB
                     </text>
                 </svg>
-                <span class="logo-initials">AB</span>
             </div>
         </a>
         <ul class="nav-links">
@@ -135,77 +217,108 @@
         </div>
     </div>
 
-    <!-- Top Right Bar (Socials & Language) -->
-    <div class="top-bar">
-        <div class="nav-socials">
-            <a href="mailto:baranyiadam27@icloud.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
-            <a href="https://www.linkedin.com/in/adam-baranyi123" target="_blank" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-            <a href="https://github.com/AdamBaranyi" target="_blank" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-        </div>
-        <div class="lang-toggle">
-            <span id="lang-de" class="lang-btn">DE</span> | <span id="lang-en" class="lang-btn active">EN</span>
-        </div>
-    </div>
-
     <!-- Horizontal scrolling content -->
     <main class="horizontal-scroll-wrapper">
-        <section class="panel legal-panel">
-            <h2 class="section-title vertical-text" data-i18n="legal_main_title">Legal Notice</h2>
+        <!-- PAGE 1 -->
+        <section id="page1" class="panel">
+            <!-- Top Right Bar (Socials & Language) -->
+            <div class="top-bar" style="position: absolute; top: 40px; right: 5vw;">
+                <div class="nav-socials">
+                    <a href="mailto:baranyiadam27@icloud.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                    <a href="https://www.linkedin.com/in/adam-baranyi123" target="_blank" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    <a href="https://github.com/AdamBaranyi" target="_blank" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                </div>
+                <div class="lang-toggle">
+                    <span id="lang-de" class="lang-btn">DE</span> | <span id="lang-en" class="lang-btn active">EN</span>
+                </div>
+            </div>
 
-            <div class="legal-content">
-                <h2 data-i18n="imprint_heading">Imprint</h2>
-                <p><strong>Adam Baranyi</strong><br>
-                Luzernerstrasse 141G<br>
-                6014 Luzern<br>
-                Switzerland</p>
+            <div class="legal-layout">
+                <h2 class="section-title vertical-text" data-i18n="legal_main_title">Legal Notice</h2>
 
-                <p><strong data-i18n="contact_label">Contact:</strong><br>
-                <span data-i18n="email_label">Email:</span> <a href="mailto:baranyiadam27@icloud.com">baranyiadam27@icloud.com</a><br>
-                <span data-i18n="phone_label">Phone:</span> +41 78 812 99 89</p>
+                <div class="legal-body">
+                    <h3 data-i18n="imprint_heading">Imprint</h3>
+                    <p><strong>Adam Baranyi</strong><br>
+                    Luzernerstrasse 141G<br>
+                    6014 Luzern<br>
+                    Switzerland</p>
 
-                <h2 data-i18n="privacy_heading">Privacy Policy</h2>
-                <h3 data-i18n="pp_1_title">1. An overview of data protection</h3>
-                <h4 data-i18n="pp_general_info">General information</h4>
-                <p data-i18n="pp_general_info_text">The following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website. The term "personal data" comprises all data that can be used to personally identify you. For detailed information about the subject matter of data protection, please consult our Data Protection Declaration, which we have included beneath this copy.</p>
+                    <p><strong data-i18n="contact_label">Contact:</strong><br>
+                    <span data-i18n="email_label">Email:</span> <a href="mailto:baranyiadam27@icloud.com">baranyiadam27@icloud.com</a><br>
+                    <span data-i18n="phone_label">Phone:</span> +41 78 812 99 89</p>
 
-                <h4 data-i18n="pp_data_recording">Data recording on this website</h4>
-                <p data-i18n="pp_controller">Who is the responsible party for the recording of data on this website (i.e., the "controller")?<br>
-                The data on this website is processed by the operator of the website, whose contact information is available under the "Imprint" section in this Privacy Policy.</p>
+                    <h3 data-i18n="privacy_heading">Privacy Policy</h3>
+                    <h4 data-i18n="pp_1_title">1. An overview of data protection</h4>
+                    <h5 data-i18n="pp_general_info" style="color:var(--primary-color); font-size:1.05rem; margin-top:20px;">General information</h5>
+                    <p data-i18n="pp_general_info_text">The following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website. The term "personal data" comprises all data that can be used to personally identify you. For detailed information about the subject matter of data protection, please consult our Data Protection Declaration, which we have included beneath this copy.</p>
 
-                <p data-i18n="pp_how_record">How do we record your data?<br>
-                We collect your data as a result of your sharing of your data with us. This may, for instance, be information you enter into our contact form.</p>
+                    <h5 data-i18n="pp_data_recording" style="color:var(--primary-color); font-size:1.05rem; margin-top:20px;">Data recording on this website</h5>
+                    <p data-i18n="pp_controller">Who is the responsible party for the recording of data on this website (i.e., the "controller")?<br>
+                    The data on this website is processed by the operator of the website, whose contact information is available under the "Imprint" section in this Privacy Policy.</p>
 
-                <p data-i18n="pp_other_data">Other data shall be recorded by our IT systems automatically or after you consent to its recording during your website visit. This data comprises primarily technical information (e.g., web browser, operating system, or time the site was accessed). This information is recorded automatically when you access this website.</p>
+                    <p data-i18n="pp_how_record">How do we record your data?<br>
+                    We collect your data as a result of your sharing of your data with us. This may, for instance, be information you enter into our contact form.</p>
+                </div>
 
-                <p data-i18n="pp_purpose">What are the purposes we use your data for?<br>
-                A portion of the information is generated to guarantee the error free provision of the website. Other data may be used to analyze your user patterns.</p>
+                <a href="#page2" class="scroll-arrow right-arrow" aria-label="Scroll right" style="align-self: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" viewBox="0 0 40 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="2" y1="12" x2="38" y2="12"></line>
+                        <polyline points="31 5 38 12 31 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </section>
 
-                <h3 data-i18n="pp_2_title">2. Hosting</h3>
-                <p data-i18n="pp_hosting_intro">We host the content of our website at the following provider:</p>
-                <h4 data-i18n="pp_external_hosting">External Hosting</h4>
-                <p data-i18n="pp_external_hosting_text">This website is hosted externally. The personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.</p>
+        <!-- PAGE 2 -->
+        <section id="page2" class="panel">
+            <div class="legal-layout">
+                <a href="#page1" class="scroll-arrow left-arrow" aria-label="Scroll left" style="align-self: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="40" viewBox="0 0 40 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="38" y1="12" x2="2" y2="12"></line>
+                        <polyline points="9 5 2 12 9 19"></polyline>
+                    </svg>
+                </a>
 
-                <h3 data-i18n="pp_3_title">3. General information and mandatory information</h3>
-                <h4 data-i18n="pp_data_protection">Data protection</h4>
-                <p data-i18n="pp_data_protection_text1">The operators of this website and its pages take the protection of your personal data very seriously. Hence, we handle your personal data as confidential information and in compliance with the statutory data protection regulations and this Data Protection Declaration.</p>
+                <div class="legal-body right-page">
+                    <div class="contact-absolute">
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:baranyiadam27@icloud.com" style="color:var(--text-color);">E-mail: baranyiadam27@icloud.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>Tel: +41 78 812 99 89</span>
+                        </div>
+                    </div>
 
-                <p data-i18n="pp_data_protection_text2">Whenever you use this website, a variety of personal information will be collected. Personal data comprises data that can be used to personally identify you. This Data Protection Declaration explains which data we collect as well as the purposes we use this data for. It also explains how, and for which purpose the information is collected.</p>
+                    <p data-i18n="pp_other_data">Other data shall be recorded by our IT systems automatically or after you consent to its recording during your website visit. This data comprises primarily technical information (e.g., web browser, operating system, or time the site was accessed). This information is recorded automatically when you access this website.</p>
 
-                <p data-i18n="pp_data_protection_text3">We herewith advise you that the transmission of data via the Internet (i.e., through e-mail communications) may be prone to security gaps. It is not possible to completely protect data against third-party access.</p>
-                <br>
-                <p><strong data-i18n="contact_label">Contact:</strong><br>
-                <span data-i18n="email_label">Email:</span> <a href="mailto:baranyiadam27@icloud.com">baranyiadam27@icloud.com</a><br>
-                <span data-i18n="phone_label">Phone:</span> +41 78 812 99 89</p>
+                    <p data-i18n="pp_purpose">What are the purposes we use your data for?<br>
+                    A portion of the information is generated to guarantee the error free provision of the website. Other data may be used to analyze your user patterns.</p>
+
+                    <h3 data-i18n="pp_2_title">2. Hosting</h3>
+                    <p data-i18n="pp_hosting_intro">We host the content of our website at the following provider:</p>
+                    <h4 data-i18n="pp_external_hosting">External Hosting</h4>
+                    <p data-i18n="pp_external_hosting_text">This website is hosted externally. The personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.</p>
+
+                    <h3 data-i18n="pp_3_title">3. General information and mandatory information</h3>
+                    <h4 data-i18n="pp_data_protection">Data protection</h4>
+                    <p data-i18n="pp_data_protection_text1">The operators of this website and its pages take the protection of your personal data very seriously. Hence, we handle your personal data as confidential information and in compliance with the statutory data protection regulations and this Data Protection Declaration.</p>
+
+                    <p data-i18n="pp_data_protection_text2">Whenever you use this website, a variety of personal information will be collected. Personal data comprises data that can be used to personally identify you. This Data Protection Declaration explains which data we collect as well as the purposes we use this data for. It also explains how, and for which purpose the information is collected.</p>
+
+                    <p data-i18n="pp_data_protection_text3">We herewith advise you that the transmission of data via the Internet (i.e., through e-mail communications) may be prone to security gaps. It is not possible to completely protect data against third-party access.</p>
+
+                    <div class="footer-absolute">
+                        <a href="../index.html" data-i18n="back_home" style="color:var(--text-color);">Home</a>
+                        <span data-i18n="imprint">Legal notice</span>
+                        <span style="margin-bottom: 5px;">privacy policy</span>
+                        <span>&copy; Adam Baranyi <span id="current-year">2026</span></span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
-    <!-- Desktop Footer Links -->
-    <div class="footer-links">
-        <span class="copyright">&copy; Adam Baranyi <span id="current-year">2026</span></span>
-        <a href="../index.html#contact" data-i18n="imprint">Imprint</a>
-        <a href="../index.html" data-i18n="back_home">Home</a>
-    </div>
 
     <!-- Mobile Footer -->
     <footer class="mobile-footer">
