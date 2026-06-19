@@ -1,0 +1,245 @@
+/* ── 480px: Kleine Handys ────────────────────── */
+@media (max-width: 480px) {
+    .panel {
+        padding: 30px 16px;
+    }
+
+    #my-work {
+        padding-right: 16px;
+    }
+
+    #contact {
+        padding-right: 16px;
+    }
+
+    /* Section-Titel */
+    .section-title.vertical-text {
+        font-size: 2rem;
+        letter-spacing: 0;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--primary-color);
+    }
+
+    /* Hero */
+    .hero-text {
+        margin-top: 6vh;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Skills: 3 Spalten */
+   .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.skill-icon-img {
+    width: 70px; /* Smaller icons to fit 3 columns on 320px screens */
+    height: 70px;
+}
+
+    /* Projekt-Number und Titel verkleinern */
+    .new-layout .project-number {
+        font-size: 56px;
+    }
+
+    .new-layout .project-header h3 {
+        font-size: 22px;
+    }
+
+    .new-layout .project-header {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .new-layout .project-card {
+        padding: 24px 16px;
+    }
+
+    /* Buttons bei Platzmangel umbrechen */
+    .project-links,
+    .new-layout .project-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Kontakt */
+    .contact-info-details a {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ── 360px: iPhone SE / iPhone 5 (320px) ─────── */
+@media (max-width: 360px) {
+
+    /* Panels */
+    .panel {
+        padding: 20px 12px;
+    }
+
+    #my-work {
+        padding-right: 12px;
+    }
+
+    #contact {
+        padding-right: 12px;
+    }
+
+    /* Section-Titel */
+    .section-title.vertical-text {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--primary-color);
+    }
+
+    /* Hero */
+    .hero-text {
+        margin-top: 10vh;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero-image {
+        height: 55vh;
+    }
+
+    /* Überschriften */
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    /* Text */
+    p {
+        font-size: 1rem;
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+
+    /* Skills */
+   .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+    .skill-item img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .skill-item span {
+        font-size: 1rem;
+    }
+
+    /* Projekt-Cards */
+    .project-card.new-layout {
+        padding: 16px 12px;
+        gap: 18px;
+        border-radius: 18px;
+    }
+
+    .new-layout .project-number {
+        font-size: 40px;
+    }
+
+    .new-layout .project-header h3 {
+        font-size: 18px;
+    }
+
+    .new-layout .project-header {
+        margin-bottom: 16px;
+    }
+
+    .new-layout .detail-section h4 {
+        font-size: 1rem;
+        padding-left: 20px;
+    }
+
+    .new-layout .detail-section h4::before {
+        width: 8px;
+        height: 8px;
+    }
+
+    .new-layout .detail-section p {
+        font-size: 1rem;
+        padding-left: 20px;
+    }
+
+    .new-layout .project-details {
+        gap: 16px;
+    }
+
+    /* Buttons */
+    .btn-outline-green,
+    .btn-filled-green {
+        padding: 8px 14px;
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 1rem;
+    }
+
+    /* Kontakt */
+    .contact-info-details a {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+
+    input, textarea {
+        font-size: 1rem;
+    }
+
+    .checkbox-group label {
+        font-size: 1rem;
+    }
+
+    .checkbox-group input {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+    }
+
+    /* Footer */
+    .footer-links {
+        margin-top: 24px;
+        gap: 6px;
+    }
+
+    .footer-links a,
+    .copyright {
+        font-size: 1rem;
+    }
+}

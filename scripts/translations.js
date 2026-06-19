@@ -1,3 +1,8 @@
+/**
+ * Dictionary containing all localized strings for the portfolio.
+ * Used by the language toggle logic to dynamically update text.
+ * @constant {Object} translations
+ */
 const translations = {
     "en": {
         "nav_why_me": "Why me",

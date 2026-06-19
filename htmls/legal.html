@@ -539,9 +539,11 @@
             const elements = document.querySelectorAll('[data-i18n]');
 
             /**
-             * Switches the legal page to the given language: updates the title,
-             * language buttons and every [data-i18n] element.
-             * @param {('en'|'de')} lang - Language code to apply.
+             * Applies the selected language across the legal page application.
+             * Updates document title, language buttons and replaces data-i18n text content.
+             * 
+             * @param {string} lang - The target language code ('en' or 'de').
+             * @returns {void}
              */
             function setLanguage(lang) {
                 document.documentElement.lang = lang;
@@ -569,31 +571,39 @@
             overlayLangDe.addEventListener('click', () => setLanguage('de'));
             overlayLangEn.addEventListener('click', () => setLanguage('en'));
 
-            // Mobile menu
+            // Mobile menu logic
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const overlay = document.getElementById('mobile-nav-overlay');
             const closeBtn = document.getElementById('overlay-close-btn');
 
-            hamburgerBtn.addEventListener('click', () => {
+            /**
+             * Opens mobile navigation overlay.
+             * @returns {void}
+             */
+            function openNav() {
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
-            });
-            closeBtn.addEventListener('click', () => {
+            }
+
+            /**
+             * Closes mobile navigation overlay.
+             * @returns {void}
+             */
+            function closeNav() {
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
-            });
+            }
+
+            hamburgerBtn.addEventListener('click', openNav);
+            closeBtn.addEventListener('click', closeNav);
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
+                if (e.key === 'Escape') closeNav();
             });
 
-            // Disable horizontal scrolling override for legal page
-            // It is handled by CSS layout now
-
+            // Initialize correct language from localStorage
             setLanguage(localStorage.getItem('lang') || 'en');
 
+            // Update footer copyright years dynamically
             const year = new Date().getFullYear();
             document.querySelectorAll('#current-year, #footer-year').forEach(el => {
                 el.textContent = year;

@@ -7,10 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submit-btn');
     const successMessage = document.getElementById('submit-success');
 
-    // Validation patterns
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/;
 
-    // State
     const validity = {
         name: false,
         email: false,
@@ -19,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * Stores the validity of a field and toggles its error/success styling,
-     * then re-evaluates whether the whole form is valid.
-     * @param {HTMLInputElement|HTMLTextAreaElement} field - The field to validate.
-     * @param {boolean} isValid - Whether the field's current value is valid.
+     * Updates the validation state of a specific field and applies corresponding CSS classes.
+     * Triggers the global form validity check afterwards.
+     * 
+     * @param {HTMLElement} field - The input element to validate (input, textarea, or checkbox).
+     * @param {boolean} isValid - Boolean indicating if the current field value is valid.
+     * @returns {void}
      */
     function validateField(field, isValid) {
         const formGroup = field.closest('.form-group');
@@ -39,13 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
         checkFormValidity();
     }
 
-    /** Enables the submit button only when all fields (incl. privacy) are valid. */
+    /**
+     * Checks if all required fields are valid and updates the submit button state.
+     * 
+     * @returns {void}
+     */
     function checkFormValidity() {
         const isFormValid = validity.name && validity.email && validity.message && validity.privacy;
         submitBtn.disabled = !isFormValid;
     }
 
-    // onBlur validation logic
     nameInput.addEventListener('blur', () => {
         validateField(nameInput, nameInput.value.trim().length > 0);
     });
@@ -58,12 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         validateField(messageInput, messageInput.value.trim().length > 0);
     });
 
-    // Validate checkbox when its value changes
     privacyCheckbox.addEventListener('change', () => {
         validateField(privacyCheckbox, privacyCheckbox.checked);
     });
 
-    // Remove error state while the user corrects the input
+    // clear error state instantly while typing
     [nameInput, emailInput, messageInput].forEach(input => {
         input.addEventListener('input', () => {
             const formGroup = input.closest('.form-group');
@@ -77,7 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Submission
+    /**
+     * Handles the form submission via fetch. 
+     * Prevents default reload, sends data to PHP script, and shows success message.
+     * 
+     * @param {Event} e - The submit event triggered by the form.
+     * @returns {Promise<void>}
+     */
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -96,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             form.reset();
 
-            // Reset validation state after a successful send
             ['name', 'email', 'message'].forEach(id => {
                 const el = document.getElementById(id);
                 const group = el.closest('.form-group');
@@ -109,9 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
             validity.privacy = false;
             checkFormValidity();
 
-            // Restore the original button content and re-apply the active language
+            // restore button content dynamically
             submitBtn.innerHTML = `<span data-i18n="btn_send">Send message</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>`;
-
+            
+            // force re-translation of the button if needed
             const activeLangBtn = document.querySelector('.lang-btn.active');
             if (activeLangBtn) activeLangBtn.click();
 
@@ -121,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 5000);
 
         } catch (error) {
-            console.error('Error submitting form:', error);
+            console.error('Submission error:', error);
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'Error. Try again.';
         }

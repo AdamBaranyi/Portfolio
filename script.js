@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Language Toggle Logic
+    // --- 1. Language Toggle ---
     const langEnBtn = document.getElementById('lang-en');
     const langDeBtn = document.getElementById('lang-de');
     const overlayLangEn = document.getElementById('overlay-lang-en');
@@ -7,28 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const translatableElements = document.querySelectorAll('[data-i18n]');
 
     /**
-     * Switches the page to the given language: updates the language buttons,
-     * replaces every [data-i18n] text and adjusts the form placeholders.
-     * @param {('en'|'de')} lang - Language code to apply.
+     * Applies the selected language across the entire application.
+     * Updates localStorage, UI active states, text content, and input placeholders.
+     * 
+     * @param {string} lang - The target language code ('en' or 'de').
+     * @returns {void}
      */
     function setLanguage(lang) {
         document.documentElement.lang = lang;
         localStorage.setItem('lang', lang);
 
-        // Desktop lang buttons
         if (lang === 'en') {
             langEnBtn.classList.add('active');
             langDeBtn.classList.remove('active');
-        } else {
-            langDeBtn.classList.add('active');
-            langEnBtn.classList.remove('active');
-        }
-
-        // Overlay lang buttons
-        if (lang === 'en') {
             overlayLangEn.classList.add('active');
             overlayLangDe.classList.remove('active');
         } else {
+            langDeBtn.classList.add('active');
+            langEnBtn.classList.remove('active');
             overlayLangDe.classList.add('active');
             overlayLangEn.classList.remove('active');
         }
@@ -55,15 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     langEnBtn.addEventListener('click', () => setLanguage('en'));
     langDeBtn.addEventListener('click', () => setLanguage('de'));
+    overlayLangDe.addEventListener('click', () => setLanguage('de'));
+    overlayLangEn.addEventListener('click', () => setLanguage('en'));
 
 
-    // 2. Hamburger Menu
+    // --- 2. Mobile Navigation ---
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
     const overlayCloseBtn = document.getElementById('overlay-close-btn');
     const overlayLinks = document.querySelectorAll('.overlay-link');
 
-    /** Opens the mobile navigation overlay and locks background scrolling. */
+    /**
+     * Opens the mobile navigation menu and prevents background scrolling.
+     * 
+     * @returns {void}
+     */
     function openMenu() {
         mobileNavOverlay.classList.add('active');
         mobileNavOverlay.setAttribute('aria-hidden', 'false');
@@ -71,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
     }
 
-    /** Closes the mobile navigation overlay and restores background scrolling. */
+    /**
+     * Closes the mobile navigation menu and restores background scrolling.
+     * 
+     * @returns {void}
+     */
     function closeMenu() {
         mobileNavOverlay.classList.remove('active');
         mobileNavOverlay.setAttribute('aria-hidden', 'true');
@@ -81,34 +87,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hamburgerBtn.addEventListener('click', openMenu);
     overlayCloseBtn.addEventListener('click', closeMenu);
+    overlayLinks.forEach(link => link.addEventListener('click', closeMenu));
 
-    overlayLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    overlayLangDe.addEventListener('click', () => setLanguage('de'));
-    overlayLangEn.addEventListener('click', () => setLanguage('en'));
-
-    // Escape key closes menu
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
     });
 
 
-    // 3. Horizontal Scrolling Logic (Desktop only) 
+    // --- 3. Scroll Logic ---
     const scrollWrapper = document.querySelector('.horizontal-scroll-wrapper');
     let isDesktop = window.innerWidth > 800;
 
     window.addEventListener('resize', () => {
         isDesktop = window.innerWidth > 800;
-        if (!isDesktop) {
-            scrollWrapper.style.transform = '';
-        }
+        if (!isDesktop) scrollWrapper.style.transform = '';
     });
 
     window.addEventListener('wheel', (e) => {
         if (isDesktop) {
             if (e.target.tagName.toLowerCase() === 'textarea') return;
+            // translate vertical wheel to horizontal scroll
             if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
                 scrollWrapper.scrollBy({ left: e.deltaY, behavior: 'auto' });
                 e.preventDefault();
@@ -117,55 +115,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: false });
 
 
-    // 4. Navigation Highlight based on scroll position 
+    // --- 4. Scroll Spy (Active Links) ---
     const sections = document.querySelectorAll('.panel');
     const navLinks = document.querySelectorAll('.nav-link');
 
     /**
- * Highlights the navigation link of the section currently in view.
- * Uses horizontal scroll position on desktop and vertical scroll on mobile.
- */
-function updateActiveNav() {
-    let activeSectionId = '';
+     * Calculates the current active section based on scroll position
+     * and highlights the corresponding navigation link.
+     * 
+     * @returns {void}
+     */
+    function updateActiveNav() {
+        let activeSectionId = '';
 
-    if (isDesktop) {
-        const viewportCenter = scrollWrapper.scrollLeft + scrollWrapper.clientWidth / 2;
+        if (isDesktop) {
+            const viewportCenter = scrollWrapper.scrollLeft + scrollWrapper.clientWidth / 2;
+            sections.forEach(section => {
+                const sectionStart = section.offsetLeft - sections[0].offsetLeft;
+                const sectionEnd = sectionStart + section.offsetWidth;
+                if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
+                    activeSectionId = section.id;
+                }
+            });
 
-        sections.forEach(section => {
-            const sectionStart = section.offsetLeft - sections[0].offsetLeft;
-            const sectionEnd = sectionStart + section.offsetWidth;
-
-            if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
-                activeSectionId = section.id;
-            }
-        });
-
-        const isAtEnd = scrollWrapper.scrollLeft + scrollWrapper.clientWidth >= scrollWrapper.scrollWidth - 5;
-
-        if (isAtEnd) {
-            activeSectionId = sections[sections.length - 1].id;
+            const isAtEnd = scrollWrapper.scrollLeft + scrollWrapper.clientWidth >= scrollWrapper.scrollWidth - 5;
+            if (isAtEnd) activeSectionId = sections[sections.length - 1].id;
+        } else {
+            const viewportCenter = window.scrollY + window.innerHeight / 2;
+            sections.forEach(section => {
+                const sectionStart = section.offsetTop;
+                const sectionEnd = sectionStart + section.offsetHeight;
+                if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
+                    activeSectionId = section.id;
+                }
+            });
         }
-    } else {
-        const viewportCenter = window.scrollY + window.innerHeight / 2;
 
-        sections.forEach(section => {
-            const sectionStart = section.offsetTop;
-            const sectionEnd = sectionStart + section.offsetHeight;
-
-            if (viewportCenter >= sectionStart && viewportCenter < sectionEnd) {
-                activeSectionId = section.id;
-            }
-        });
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
+        if (activeLink) activeLink.classList.add('active');
     }
-
-    navLinks.forEach(link => link.classList.remove('active'));
-
-    const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
-
-    if (activeLink) {
-        activeLink.classList.add('active');
-    }
-}
 
     scrollWrapper.addEventListener('scroll', updateActiveNav);
     window.addEventListener('scroll', updateActiveNav);
@@ -173,7 +162,7 @@ function updateActiveNav() {
     updateActiveNav();
 
 
-    // 5. Smooth Anchor Scrolling 
+    // --- 5. Smooth Anchor Scrolling ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -197,12 +186,11 @@ function updateActiveNav() {
         });
     });
 
-
-    // Initialize — restore the previously chosen language (defaults to English)
+    // --- Initialization ---
     setLanguage(localStorage.getItem('lang') || 'en');
 
-    const year = new Date().getFullYear();
+    const currentYear = new Date().getFullYear();
     document.querySelectorAll('#current-year, #footer-year').forEach(el => {
-        el.textContent = year;
+        el.textContent = currentYear;
     });
 });
