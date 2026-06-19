@@ -215,6 +215,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /**
+     * Handles intersection observer for reveal animations.
+     * @param {IntersectionObserverEntry[]} entries - Observer entries.
+     * @param {IntersectionObserver} observer - The observer instance.
+     * @returns {void}
+     */
+    function handleReveal(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    const revealObserver = new IntersectionObserver(handleReveal, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
     // --- Initialization ---
     setLanguage(localStorage.getItem('lang') || 'en');
 

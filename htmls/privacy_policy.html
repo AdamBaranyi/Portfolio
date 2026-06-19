@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Adam Baranyi</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23b5e93b%22>AB</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body { overflow-y: auto !important; }
+        main { margin-left: var(--sidebar-width); }
+        .legal-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding-top: 15vh;
+            padding-left: 5vw;
+            padding-right: 5vw;
+            gap: 60px;
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+        }
+        .legal-body {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 800px;
+            padding-bottom: 100px;
+        }
+        .legal-body h2 { display: none; }
+        .legal-body h3 { font-size: 1.3rem; margin: 0 0 12px; color: var(--primary-color); }
+        .legal-body h4 { font-size: 1.05rem; margin: 20px 0 8px; color: var(--primary-color); }
+        .legal-body p { color: var(--text-color); line-height: 1.6; margin-bottom: 16px; font-size: 0.95rem; }
+        .legal-body a { color: var(--primary-color); text-decoration: none; word-break: break-word; }
+        
+        .desktop-back-arrow {
+            position: fixed;
+            top: 40px;
+            left: calc(var(--sidebar-width) + 40px);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+        .desktop-back-arrow svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--primary-color);
+        }
+        .mobile-back-arrow { display: none; }
+        
+        main::after {
+            content: '';
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: var(--sidebar-width);
+            background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 20px), linear-gradient(to bottom, var(--primary-color) 0%, #8cb829 100%);
+            z-index: -1;
+        }
+        .legal-body.right-page { max-width: 900px; padding-right: var(--sidebar-width); }
+        
+        .top-right-group {
+            position: absolute;
+            top: 40px;
+            right: calc(var(--sidebar-width) + 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 10;
+        }
+        .top-right-group .top-bar {
+            position: static;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .top-right-group .contact-absolute {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+        .contact-absolute .contact-item { display: flex; align-items: center; gap: 10px; }
+        
+        @media (max-width: 1100px) {
+            main { margin-left: 0 !important; }
+            .desktop-back-arrow { display: none !important; }
+            .mobile-back-arrow { display: block; margin-bottom: 20px; }
+            .legal-layout {
+                width: 100%;
+                margin-left: 0;
+                flex-direction: column;
+                padding: 120px 20px 40px 20px;
+                gap: 30px;
+                height: auto;
+            }
+            .legal-body.right-page { padding-right: 0; }
+            .top-right-group { display: none !important; }
+            main::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <a href="../index.html" class="logo" aria-label="Go to start">
+            <div class="logo-wrapper">
+                <svg viewBox="0 0 120 120" class="logo-text-svg" overflow="visible">
+                    <path id="text-curve" d="M 60,100 A 40,40 0 1,1 60,20 A 40,40 0 1,1 60,100" fill="none" />
+                    <text class="curved-text"><textPath href="#text-curve" startOffset="50%" text-anchor="middle">frontend developer</textPath></text>
+                    <text x="60" y="66" class="logo-initials-svg" text-anchor="middle" dominant-baseline="middle">AB</text>
+                </svg>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html#why-me" class="nav-link" data-i18n="nav_why_me">Why me</a></li>
+            <li><a href="../index.html#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
+            <li><a href="../index.html#my-work" class="nav-link" data-i18n="nav_my_work">My Work</a></li>
+            <li><a href="../index.html#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true">
+        <button class="overlay-close-btn" id="overlay-close-btn" aria-label="Close navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <nav class="overlay-nav">
+            <a href="../index.html#why-me" class="overlay-link" data-i18n="nav_why_me">Why me</a>
+            <a href="../index.html#skills" class="overlay-link" data-i18n="nav_skills">My Skill Set</a>
+            <a href="../index.html#my-work" class="overlay-link" data-i18n="nav_my_work">My Work</a>
+            <a href="../index.html#contact" class="overlay-link" data-i18n="nav_contact">Contact me</a>
+        </nav>
+        <div class="overlay-lang">
+            <span id="overlay-lang-de" class="overlay-lang-btn">DE</span>
+            <span class="overlay-lang-sep">|</span>
+            <span id="overlay-lang-en" class="overlay-lang-btn active">EN</span>
+        </div>
+    </div>
+
+    <main>
+        <a href="../index.html" class="desktop-back-arrow" aria-label="Go back">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </a>
+        
+        <div class="top-right-group">
+            <div class="top-bar">
+                <div class="nav-socials">
+                    <a href="mailto:baranyiadam27@icloud.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                    <a href="https://www.linkedin.com/in/adam-baranyi123" target="_blank" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    <a href="https://github.com/AdamBaranyi" target="_blank" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                </div>
+                <div class="lang-toggle">
+                    <span id="lang-de" class="lang-btn">DE</span> | <span id="lang-en" class="lang-btn active">EN</span>
+                </div>
+            </div>
+            <div class="contact-absolute">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <a href="mailto:baranyiadam27@icloud.com" style="color:var(--text-color);">E-mail: baranyiadam27@icloud.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span>Tel: +41 78 812 99 89</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="legal-layout">
+            <a href="../index.html" class="mobile-back-arrow" aria-label="Go back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <h2 class="section-title vertical-text" data-i18n="privacy_heading">Privacy Policy</h2>
+            
+            <div class="legal-body right-page">
+                <h4 data-i18n="pp_1_title">1. An overview of data protection</h4>
+                <h5 data-i18n="pp_general_info" style="color:var(--primary-color); font-size:1.05rem; margin-top:20px;">General information</h5>
+                <p data-i18n="pp_general_info_text">The following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website. The term "personal data" comprises all data that can be used to personally identify you. For detailed information about the subject matter of data protection, please consult our Data Protection Declaration, which we have included beneath this copy.</p>
+
+                <h5 data-i18n="pp_data_recording" style="color:var(--primary-color); font-size:1.05rem; margin-top:20px;">Data recording on this website</h5>
+                <p data-i18n="pp_controller">Who is the responsible party for the recording of data on this website (i.e., the "controller")?<br>The data on this website is processed by the operator of the website, whose contact information is available under the "Imprint" section in this Privacy Policy.</p>
+                <p data-i18n="pp_how_record">How do we record your data?<br>We collect your data as a result of your sharing of your data with us. This may, for instance, be information you enter into our contact form.</p>
+                <p data-i18n="pp_other_data">Other data shall be recorded by our IT systems automatically or after you consent to its recording during your website visit. This data comprises primarily technical information (e.g., web browser, operating system, or time the site was accessed). This information is recorded automatically when you access this website.</p>
+                <p data-i18n="pp_purpose">What are the purposes we use your data for?<br>A portion of the information is generated to guarantee the error free provision of the website. Other data may be used to analyze your user patterns.</p>
+
+                <h3 data-i18n="pp_2_title">2. Hosting</h3>
+                <p data-i18n="pp_hosting_intro">We host the content of our website at the following provider:</p>
+                <h4 data-i18n="pp_external_hosting">External Hosting</h4>
+                <p data-i18n="pp_external_hosting_text">This website is hosted externally. The personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.</p>
+
+                <h3 data-i18n="pp_3_title">3. General information and mandatory information</h3>
+                <h4 data-i18n="pp_data_protection">Data protection</h4>
+                <p data-i18n="pp_data_protection_text1">The operators of this website and its pages take the protection of your personal data very seriously. Hence, we handle your personal data as confidential information and in compliance with the statutory data protection regulations and this Data Protection Declaration.</p>
+                <p data-i18n="pp_data_protection_text2">Whenever you use this website, a variety of personal information will be collected. Personal data comprises data that can be used to personally identify you. This Data Protection Declaration explains which data we collect as well as the purposes we use this data for. It also explains how, and for which purpose the information is collected.</p>
+                <p data-i18n="pp_data_protection_text3">We herewith advise you that the transmission of data via the Internet (i.e., through e-mail communications) may be prone to security gaps. It is not possible to completely protect data against third-party access.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mobile-footer">
+      <a href="#" class="scroll-to-top" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="19" x2="12" y2="5"></line>
+          <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+      </a>
+      <div class="mobile-footer-socials">
+        <a href="https://github.com/AdamBaranyi" target="_blank" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+        <a href="mailto:baranyiadam27@icloud.com" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/adam-baranyi123" target="_blank" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+      </div>
+      <div class="mobile-footer-bar">
+        <div class="logo-wrapper">
+          <svg viewBox="0 0 120 120" class="logo-text-svg" overflow="visible">
+            <path id="footer-text-curve" d="M 60,100 A 40,40 0 1,1 60,20 A 40,40 0 1,1 60,100" fill="none"/>
+            <text class="curved-text"><textPath href="#footer-text-curve" startOffset="50%" text-anchor="middle">frontend developer</textPath></text>
+            <text x="60" y="66" class="logo-initials-svg" text-anchor="middle" dominant-baseline="middle">AB</text>
+          </svg>
+        </div>
+        <span class="copyright">&copy; Adam Baranyi <span id="footer-year">2026</span></span>
+        <nav class="mobile-footer-links">
+          <a href="imprint.html" data-i18n="imprint">Legal notice</a>
+          <a href="privacy_policy.html" data-i18n="privacy_policy">Privacy policy</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+        const legalTranslations = {
+            en: {
+                page_title: "Privacy Policy - Adam Baranyi",
+                nav_why_me: "Why me", nav_skills: "Skills", nav_my_work: "My Work", nav_contact: "Contact",
+                imprint: "Legal Notice", privacy_policy: "Privacy Policy", privacy_heading: "Privacy Policy",
+                pp_1_title: "1. An overview of data protection", pp_general_info: "General information",
+                pp_general_info_text: "The following information will provide you with an easy to navigate overview of what will happen with your personal data when you visit this website. The term \"personal data\" comprises all data that can be used to personally identify you. For detailed information about the subject matter of data protection, please consult our Data Protection Declaration, which we have included beneath this copy.",
+                pp_data_recording: "Data recording on this website",
+                pp_controller: "Who is the responsible party for the recording of data on this website (i.e., the \"controller\")?<br>The data on this website is processed by the operator of the website, whose contact information is available under the \"Imprint\" section in this Privacy Policy.",
+                pp_how_record: "How do we record your data?<br>We collect your data as a result of your sharing of your data with us. This may, for instance, be information you enter into our contact form.",
+                pp_other_data: "Other data shall be recorded by our IT systems automatically or after you consent to its recording during your website visit. This data comprises primarily technical information (e.g., web browser, operating system, or time the site was accessed). This information is recorded automatically when you access this website.",
+                pp_purpose: "What are the purposes we use your data for?<br>A portion of the information is generated to guarantee the error free provision of the website. Other data may be used to analyze your user patterns.",
+                pp_2_title: "2. Hosting", pp_hosting_intro: "We host the content of our website at the following provider:",
+                pp_external_hosting: "External Hosting",
+                pp_external_hosting_text: "This website is hosted externally. The personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.",
+                pp_3_title: "3. General information and mandatory information", pp_data_protection: "Data protection",
+                pp_data_protection_text1: "The operators of this website and its pages take the protection of your personal data very seriously. Hence, we handle your personal data as confidential information and in compliance with the statutory data protection regulations and this Data Protection Declaration.",
+                pp_data_protection_text2: "Whenever you use this website, a variety of personal information will be collected. Personal data comprises data that can be used to personally identify you. This Data Protection Declaration explains which data we collect as well as the purposes we use this data for. It also explains how, and for which purpose the information is collected.",
+                pp_data_protection_text3: "We herewith advise you that the transmission of data via the Internet (i.e., through e-mail communications) may be prone to security gaps. It is not possible to completely protect data against third-party access."
+            },
+            de: {
+                page_title: "Datenschutz - Adam Baranyi",
+                nav_why_me: "Warum ich", nav_skills: "Fähigkeiten", nav_my_work: "Meine Arbeit", nav_contact: "Kontakt",
+                imprint: "Impressum", privacy_policy: "Datenschutz", privacy_heading: "Datenschutzerklärung",
+                pp_1_title: "1. Datenschutz auf einen Blick", pp_general_info: "Allgemeine Hinweise",
+                pp_general_info_text: "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.",
+                pp_data_recording: "Datenerfassung auf dieser Website",
+                pp_controller: "Wer ist verantwortlich für die Datenerfassung auf dieser Website?<br>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Impressum\" in dieser Datenschutzerklärung entnehmen.",
+                pp_how_record: "Wie erfassen wir Ihre Daten?<br>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.",
+                pp_other_data: "Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.",
+                pp_purpose: "Wofür nutzen wir Ihre Daten?<br>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.",
+                pp_2_title: "2. Hosting", pp_hosting_intro: "Wir hosten die Inhalte unserer Website bei folgendem Anbieter:",
+                pp_external_hosting: "Externes Hosting",
+                pp_external_hosting_text: "Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten handeln, die über eine Website generiert werden.",
+                pp_3_title: "3. Allgemeine Hinweise und Pflichtinformationen", pp_data_protection: "Datenschutz",
+                pp_data_protection_text1: "Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.",
+                pp_data_protection_text2: "Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.",
+                pp_data_protection_text3: "Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich."
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('[data-i18n]');
+            function updateLangButtons(lang) {
+                const isEn = lang === 'en';
+                document.getElementById('lang-en').classList.toggle('active', isEn);
+                document.getElementById('lang-de').classList.toggle('active', !isEn);
+                document.getElementById('overlay-lang-en').classList.toggle('active', isEn);
+                document.getElementById('overlay-lang-de').classList.toggle('active', !isEn);
+            }
+            function translateElements(lang) {
+                elements.forEach(el => {
+                    const val = legalTranslations[lang][el.getAttribute('data-i18n')];
+                    if (val) {
+                        if (val.includes('<')) el.innerHTML = val;
+                        else el.textContent = val;
+                    }
+                });
+            }
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.title = legalTranslations[lang].page_title;
+                localStorage.setItem('lang', lang);
+                updateLangButtons(lang);
+                translateElements(lang);
+            }
+            document.getElementById('lang-de').addEventListener('click', () => setLanguage('de'));
+            document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+            document.getElementById('overlay-lang-de').addEventListener('click', () => setLanguage('de'));
+            document.getElementById('overlay-lang-en').addEventListener('click', () => setLanguage('en'));
+
+            function openNav() { document.getElementById('mobile-nav-overlay').classList.add('active'); }
+            function closeNav() { document.getElementById('mobile-nav-overlay').classList.remove('active'); }
+            document.getElementById('hamburger-btn').addEventListener('click', openNav);
+            document.getElementById('overlay-close-btn').addEventListener('click', closeNav);
+            setLanguage(localStorage.getItem('lang') || 'en');
+        });
+    </script>
+</body>
+</html>

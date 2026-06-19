@@ -103,7 +103,7 @@
 
     /* Section-Titel */
     .section-title.vertical-text {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         margin-bottom: 10px;
         color: transparent;
         -webkit-text-stroke: 2px var(--primary-color);
