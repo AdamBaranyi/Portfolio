@@ -19,8 +19,9 @@
 
 .logo-wrapper {
     position: relative;
-    width: 150px;
-    height: 150px;
+    /* Scale smoothly between 130px and 160px */
+    width: clamp(130px, 12vw, 160px);
+    height: clamp(130px, 12vw, 160px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +38,7 @@
 
 .curved-text {
     font-family: 'Quantico', sans-serif;
-    font-size: 14.5px;
+    font-size: 17.5px;
     font-weight: 500;
     fill: #000;
     letter-spacing: 0.5px;
@@ -45,7 +46,7 @@
 
 .logo-initials-svg {
     font-family: 'Quantico', sans-serif;
-    font-size: 46px;
+    font-size: 40px;
     font-weight: 700;
     fill: transparent;
     stroke: #000;

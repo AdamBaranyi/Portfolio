@@ -19,13 +19,14 @@
         padding: 0 20px;
         justify-content: space-between;
         background: var(--primary-color); /* Override gradient */
-        box-shadow: none; /* Ensure no shadow */
+        box-shadow: inset -4px -4px 15px rgba(0, 0, 0, 0.3); /* Inset shadow on bottom and right */
     }
 
     .logo-wrapper {
-        width: 110px;
-        height: 110px;
-        margin-top: -10px;
+        width: 115px;
+        height: 115px;
+        align-self: flex-start;
+        margin-top: 18px; /* Massive distance from the top edge! */
     }
 
 
@@ -373,15 +374,6 @@
 
 /* ── 360px: iPhone SE / iPhone 5 (320px) ─────── */
 @media (max-width: 360px) {
-    /* Logo */
-    .logo-initials {
-        font-size: 1.8rem;
-    }
-
-    .logo-wrapper {
-        width: 48px;
-        height: 48px;
-    }
 
     /* Panels */
     .panel {

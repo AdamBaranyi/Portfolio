@@ -283,6 +283,7 @@ input:-webkit-autofill:active {
     align-items: center;
     padding: 30px 20px 24px;
     gap: 10px;
+    box-shadow: inset -4px -4px 15px rgba(0, 0, 0, 0.3); /* Inset shadow on bottom and right */
 }
 
 .mobile-footer-bar .logo-wrapper {
@@ -292,6 +293,8 @@ input:-webkit-autofill:active {
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center; /* Override flex-start from header */
+    margin-top: 0;
 }
 
 .mobile-footer-bar .logo-text-svg {

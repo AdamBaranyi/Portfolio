@@ -12,11 +12,12 @@
     cursor: pointer;
     padding: 6px;
     flex-shrink: 0;
+    /* Removed background/shadow to match design */
 }
 
 .hamburger-btn span {
     display: block;
-    width: 22px;
+    width: 28px; /* Wider lines to match design */
     height: 2px;
     background-color: #000;
     border-radius: 2px;
@@ -72,7 +73,7 @@
 .overlay-link {
     font-family: 'Quantico', sans-serif;
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 400; /* Lighter font weight to match design */
     color: #000;
     text-decoration: none;
     transition: opacity 0.2s;
@@ -90,7 +91,7 @@
     align-items: center;
     gap: 10px;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #000;
 }
 
