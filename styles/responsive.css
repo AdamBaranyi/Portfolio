@@ -101,6 +101,11 @@
     }
 
     /* Why Me */
+    .why-me-layout {
+        padding-left: 0;
+        padding-top: 0;
+    }
+
     .why-me-body {
         align-items: center;
         max-width: 100%;

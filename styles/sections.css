@@ -1,12 +1,16 @@
 /* Why Me Section */
 .why-me-layout {
-    align-items: center;
-    padding-top: 0;
+    align-items: flex-start; /* Align title and body exactly at their top edges */
+    justify-content: flex-start; /* Start from the left */
+    padding-top: 15vh; /* Push the whole block down to match design */
+    padding-left: 10vw; /* Distance from the sidebar */
+    gap: 80px; /* Create the gap between title and body */
 }
 
 #why-me .section-title {
     align-self: flex-start;
-    margin-top: 5vh;
+    margin-top: 0; /* Removed old margin so it perfectly aligns with body top */
+    margin-right: 0; /* Let flex gap handle the spacing */
 }
 
 #why-me {
