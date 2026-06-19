@@ -128,13 +128,15 @@
                 overflow-x: hidden;
                 overflow-y: auto;
                 scroll-snap-type: none;
-                padding-top: 80px;
+                padding-top: 80px; /* Space for the top mobile header */
             }
 
             .panel {
+                width: 100vw;
                 min-width: 100vw;
                 height: auto;
-                min-height: 100vh;
+                min-height: auto;
+                padding: 0;
             }
 
             .legal-layout {
@@ -143,6 +145,19 @@
                 flex-direction: column;
                 padding: 40px 20px;
                 gap: 30px;
+                height: auto;
+            }
+
+            #page2::after {
+                display: none; /* Hide the green desktop sidebar glow on mobile */
+            }
+
+            .legal-body.right-page {
+                padding-right: 0; /* Reset padding used for the green desktop sidebar */
+            }
+
+            .top-bar {
+                display: none !important; /* Hide desktop top-bar, mobile uses hamburger menu */
             }
 
             .contact-absolute, .footer-absolute {
