@@ -266,12 +266,19 @@ input:-webkit-autofill:active {
 }
 
 .mobile-footer-socials a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px; /* Slightly larger for mobile tap targets */
+    height: 44px;
+    border-radius: 50%;
     color: var(--text-color);
-    transition: color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .mobile-footer-socials a:hover {
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: #000;
 }
 
 .mobile-footer-bar {
