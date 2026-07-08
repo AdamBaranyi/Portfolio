@@ -161,7 +161,8 @@
 .mobile-overlay {
   position: fixed;
   inset: 0;
-  z-index: 110;
+  /* stays below the navbar so the hamburger/close button remains clickable */
+  z-index: 95;
   display: flex;
   flex-direction: column;
   align-items: center;

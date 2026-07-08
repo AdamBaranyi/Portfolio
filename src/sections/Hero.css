@@ -94,6 +94,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -134,6 +135,10 @@
 }
 
 @media (max-width: 800px) {
+  .hero {
+    padding-bottom: 130px;
+  }
+
   .hero-inner {
     flex-direction: column-reverse;
     text-align: center;
@@ -143,5 +148,9 @@
   .hero-photo img {
     width: 190px;
     height: 190px;
+  }
+
+  .scroll-hint {
+    font-size: 0.68rem;
   }
 }
