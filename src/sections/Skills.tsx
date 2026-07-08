@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import SectionHeading from '../components/SectionHeading';
 import { skills } from '../data/content';
@@ -12,7 +13,11 @@ export default function Skills() {
       <p className="skills-intro reveal">{t('skills_text')}</p>
       <ul className="skills-grid">
         {skills.map((skill) => (
-          <li key={skill.name} className="skill-card glass reveal">
+          <li
+            key={skill.name}
+            className="skill-card glass reveal"
+            style={{ '--skill-color': skill.color } as CSSProperties}
+          >
             <img src={skill.icon} alt="" loading="lazy" />
             <span>{skill.name}</span>
           </li>

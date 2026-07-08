@@ -15,6 +15,8 @@ export interface Project {
 export interface Skill {
   name: string;
   icon: string;
+  /** brand color, used for the glow on hover */
+  color: string;
 }
 
 export const projects: Project[] = [
@@ -54,17 +56,17 @@ export const projects: Project[] = [
 ];
 
 export const skills: Skill[] = [
-  { name: 'React', icon: '/assets/img/React.svg' },
-  { name: 'Angular', icon: '/assets/img/Angular.svg' },
-  { name: 'TypeScript', icon: '/assets/img/Typescript.svg' },
-  { name: 'JavaScript', icon: '/assets/img/Javascript.svg' },
-  { name: 'HTML', icon: '/assets/img/Html.svg' },
-  { name: 'CSS', icon: '/assets/img/Css.svg' },
-  { name: 'REST-API', icon: '/assets/img/Rest-Api.svg' },
-  { name: 'Supabase', icon: '/assets/img/Supabase.svg' },
-  { name: 'Git', icon: '/assets/img/Git.svg' },
-  { name: 'Scrum', icon: '/assets/img/Scrum.svg' },
-  { name: 'Material design', icon: '/assets/img/Material Design.svg' },
+  { name: 'React', icon: '/assets/img/React.svg', color: '#61DAFB' },
+  { name: 'Angular', icon: '/assets/img/Angular.svg', color: '#DD0031' },
+  { name: 'TypeScript', icon: '/assets/img/Typescript.svg', color: '#3178C6' },
+  { name: 'JavaScript', icon: '/assets/img/Javascript.svg', color: '#F7DF1E' },
+  { name: 'HTML', icon: '/assets/img/Html.svg', color: '#E34F26' },
+  { name: 'CSS', icon: '/assets/img/Css.svg', color: '#1572B6' },
+  { name: 'REST-API', icon: '/assets/img/Rest-Api.svg', color: '#FF6C37' },
+  { name: 'Supabase', icon: '/assets/img/Supabase.svg', color: '#3ECF8E' },
+  { name: 'Git', icon: '/assets/img/Git.svg', color: '#F05032' },
+  { name: 'Scrum', icon: '/assets/img/Scrum.svg', color: '#009FDA' },
+  { name: 'Material design', icon: '/assets/img/Material Design.svg', color: '#4285F4' },
 ];
 
 export const contactInfo = {
