@@ -52,6 +52,21 @@
   font-size: 0.9rem;
 }
 
+.footer-tech {
+  max-width: 1200px;
+  margin: 18px auto 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.footer-tech .tech-name {
+  color: var(--primary-dim);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
 @media (max-width: 600px) {
   .footer-inner {
     flex-direction: column;

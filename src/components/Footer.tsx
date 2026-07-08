@@ -3,6 +3,8 @@ import { contactInfo } from '../data/content';
 import { GitHubIcon, LinkedInIcon, MailIcon } from './icons';
 import './Footer.css';
 
+const techStack = ['React', 'TypeScript', 'Vite', 'three.js'];
+
 export default function Footer() {
   const { t } = useLanguage();
   const year = new Date().getFullYear();
@@ -27,6 +29,15 @@ export default function Footer() {
         </nav>
         <span className="footer-copy">© Adam Baranyi {year}</span>
       </div>
+      <p className="footer-tech">
+        {t('footer_built')}{' '}
+        {techStack.map((tech, i) => (
+          <span key={tech}>
+            <span className="tech-name">{tech}</span>
+            {i < techStack.length - 1 && ' · '}
+          </span>
+        ))}
+      </p>
     </footer>
   );
 }
