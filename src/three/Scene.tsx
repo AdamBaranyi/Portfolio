@@ -56,6 +56,50 @@ function ParticleField({ count }: { count: number }) {
 }
 
 /**
+ * Two little planets orbiting the hero shape — named after my
+ * whippets: Jupiter (the pale one, calm and steady) and Kepler
+ * (dark mask, the young fast one).
+ */
+function Companions() {
+  const jupiter = useRef<THREE.Mesh>(null);
+  const kepler = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime;
+    if (jupiter.current) {
+      jupiter.current.position.set(Math.cos(t * 0.25) * 2.6, Math.sin(t * 0.25) * 0.5, Math.sin(t * 0.25) * 2.6);
+    }
+    if (kepler.current) {
+      kepler.current.position.set(Math.cos(-t * 0.45) * 3.4, Math.sin(-t * 0.45) * -0.7, Math.sin(-t * 0.45) * 3.4);
+    }
+  });
+
+  return (
+    <>
+      {/* faint orbit paths */}
+      <mesh rotation={[Math.PI / 2 - 0.19, 0, 0]}>
+        <torusGeometry args={[2.6, 0.004, 6, 96]} />
+        <meshBasicMaterial color={PRIMARY} transparent opacity={0.14} />
+      </mesh>
+      <mesh rotation={[Math.PI / 2 + 0.2, 0, 0]}>
+        <torusGeometry args={[3.4, 0.004, 6, 96]} />
+        <meshBasicMaterial color={PRIMARY} transparent opacity={0.1} />
+      </mesh>
+      {/* Jupiter — pale sand, the bigger one */}
+      <mesh ref={jupiter}>
+        <sphereGeometry args={[0.22, 24, 24]} />
+        <meshStandardMaterial color="#e3cfa8" roughness={0.7} metalness={0.1} />
+      </mesh>
+      {/* Kepler — brindle with the dark mask, smaller and quicker */}
+      <mesh ref={kepler}>
+        <sphereGeometry args={[0.15, 24, 24]} />
+        <meshStandardMaterial color="#6e5d4c" roughness={0.6} metalness={0.15} />
+      </mesh>
+    </>
+  );
+}
+
+/**
  * Wireframe icosahedron in the middle distance — the visual anchor
  * of the hero. Spins with scroll progress and breathes slightly.
  */
@@ -86,6 +130,7 @@ function HeroShape() {
         <icosahedronGeometry args={[1.15, 0]} />
         <meshBasicMaterial color={PRIMARY} wireframe transparent opacity={0.22} />
       </mesh>
+      <Companions />
     </group>
   );
 }
@@ -124,6 +169,8 @@ export default function Scene({ compact }: SceneProps) {
         eventSource={document.body}
         eventPrefix="client"
       >
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[4, 3, 6]} intensity={1.4} />
         <ParticleField count={compact ? 900 : 2600} />
         {!compact && <HeroShape />}
         <CameraRig />
