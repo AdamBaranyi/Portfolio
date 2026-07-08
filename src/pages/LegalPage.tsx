@@ -52,6 +52,7 @@ function Privacy() {
       <p>{t('pp_hosting_intro')}</p>
       <h3>{t('pp_external_hosting')}</h3>
       <p>{t('pp_external_hosting_text')}</p>
+      <p>{t('pp_hoster')}</p>
 
       <h2>{t('pp_3_title')}</h2>
       <h3>{t('pp_data_protection')}</h3>

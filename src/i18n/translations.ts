@@ -90,6 +90,8 @@ export const translations = {
     pp_external_hosting: 'External Hosting',
     pp_external_hosting_text:
       'This website is hosted externally. The personal data collected on this website are stored on the servers of the host. These may include, but are not limited to, IP addresses, contact requests, metadata and communications, contract information, contact information, names, web page access, and other data generated through a web site.',
+    pp_hoster:
+      'Our hosting provider is FSIT (fsit.ch), with servers located in Switzerland. Your data therefore remains in Switzerland.',
     pp_3_title: '3. General information and mandatory information',
     pp_data_protection: 'Data protection',
     pp_data_protection_text1:
@@ -184,6 +186,8 @@ export const translations = {
     pp_external_hosting: 'Externes Hosting',
     pp_external_hosting_text:
       'Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten handeln, die über eine Website generiert werden.',
+    pp_hoster:
+      'Unser Hoster ist FSIT (fsit.ch) mit Serverstandort in der Schweiz. Deine Daten bleiben somit in der Schweiz.',
     pp_3_title: '3. Allgemeine Hinweise und Pflichtinformationen',
     pp_data_protection: 'Datenschutz',
     pp_data_protection_text1:
