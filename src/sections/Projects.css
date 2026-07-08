@@ -1,0 +1,124 @@
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.tilt-card {
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  overflow: hidden;
+}
+
+/* alternate the image side for a livelier rhythm */
+.projects-list .tilt-card:nth-child(even) .project-card {
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.projects-list .tilt-card:nth-child(even) .project-media {
+  order: 2;
+}
+
+.project-media {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.project-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tilt-card:hover .project-media img {
+  transform: scale(1.05);
+}
+
+.project-number {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--primary);
+  opacity: 0.9;
+}
+
+.project-body {
+  padding: clamp(26px, 3.5vw, 44px);
+}
+
+.project-body h3 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  margin-bottom: 18px;
+}
+
+.project-body h4 {
+  color: var(--primary);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin: 20px 0 8px;
+}
+
+.project-body p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.tech-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tags li {
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.project-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.project-links .btn {
+  padding: 11px 24px;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 800px) {
+  .project-card,
+  .projects-list .tilt-card:nth-child(even) .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-list .tilt-card:nth-child(even) .project-media {
+    order: 0;
+  }
+
+  .project-media {
+    min-height: 200px;
+  }
+
+  .projects-list {
+    gap: 40px;
+  }
+}

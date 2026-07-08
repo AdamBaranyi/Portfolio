@@ -1,0 +1,54 @@
+.why-me-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
+
+.why-me-intro {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.why-me-facts h3 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 22px;
+}
+
+.why-me-facts ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.why-me-facts li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.why-me-facts li:hover {
+  border-color: var(--border-strong);
+  transform: translateX(6px);
+}
+
+.why-me-facts li span {
+  font-size: 1.3rem;
+}
+
+@media (max-width: 800px) {
+  .why-me-grid {
+    grid-template-columns: 1fr;
+  }
+}

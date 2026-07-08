@@ -1,0 +1,70 @@
+.skills-intro {
+  max-width: 640px;
+  margin-bottom: 48px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.skills-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 18px;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 16px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-strong);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+}
+
+.skill-card img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.skill-card.challenge {
+  grid-column: span 2;
+  border-color: var(--border-strong);
+}
+
+.skill-card.challenge p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 560px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+  }
+
+  .skill-card {
+    padding: 20px 10px;
+  }
+
+  .skill-card img {
+    width: 40px;
+    height: 40px;
+  }
+}
