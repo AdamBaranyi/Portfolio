@@ -15,7 +15,14 @@ export default function Projects() {
           <TiltCard key={project.number} className="reveal">
             <article className="project-card glass">
               <div className="project-media">
-                <img src={project.image} alt={`${project.title} preview`} loading="lazy" />
+                {/* blurred copy fills the box so the sharp image fits without bars */}
+                <img src={project.image} alt="" aria-hidden="true" className="media-bg" loading="lazy" />
+                <img
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  className="media-fg"
+                  loading="lazy"
+                />
                 <span className="project-number" aria-hidden="true">
                   0{project.number}
                 </span>

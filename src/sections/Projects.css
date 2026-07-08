@@ -30,16 +30,27 @@
   overflow: hidden;
 }
 
-.project-media img {
+.project-media .media-bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: blur(20px) brightness(0.45) saturate(1.2);
+  transform: scale(1.15);
+}
+
+.project-media .media-fg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 22px;
   transition: transform 0.5s ease;
 }
 
-.tilt-card:hover .project-media img {
+.tilt-card:hover .project-media .media-fg {
   transform: scale(1.05);
 }
 
