@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { scrollState } from '../hooks/scrollState';
+import { makeJupiterTexture, makeKeplerTexture, makeStarTexture } from './textures';
 
 const PRIMARY = new THREE.Color('#b5e93b');
 
@@ -12,6 +13,7 @@ const PRIMARY = new THREE.Color('#b5e93b');
  */
 function ParticleField({ count }: { count: number }) {
   const points = useRef<THREE.Points>(null);
+  const starTexture = useMemo(makeStarTexture, []);
 
   const { positions, sizes } = useMemo(() => {
     const positions = new Float32Array(count * 3);
@@ -44,10 +46,11 @@ function ParticleField({ count }: { count: number }) {
       </bufferGeometry>
       <pointsMaterial
         color={PRIMARY}
-        size={0.045}
+        map={starTexture}
+        size={0.09}
         sizeAttenuation
         transparent
-        opacity={0.55}
+        opacity={0.65}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
@@ -61,16 +64,20 @@ function ParticleField({ count }: { count: number }) {
  * (dark mask, the young fast one).
  */
 function Companions() {
-  const jupiter = useRef<THREE.Mesh>(null);
-  const kepler = useRef<THREE.Mesh>(null);
+  const jupiter = useRef<THREE.Group>(null);
+  const kepler = useRef<THREE.Group>(null);
+  const jupiterMap = useMemo(makeJupiterTexture, []);
+  const keplerMap = useMemo(makeKeplerTexture, []);
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
     if (jupiter.current) {
       jupiter.current.position.set(Math.cos(t * 0.25) * 2.6, Math.sin(t * 0.25) * 0.5, Math.sin(t * 0.25) * 2.6);
+      jupiter.current.rotation.y += delta * 0.4;
     }
     if (kepler.current) {
       kepler.current.position.set(Math.cos(-t * 0.45) * 3.4, Math.sin(-t * 0.45) * -0.7, Math.sin(-t * 0.45) * 3.4);
+      kepler.current.rotation.y += delta * 0.7;
     }
   });
 
@@ -85,16 +92,44 @@ function Companions() {
         <torusGeometry args={[3.4, 0.004, 6, 96]} />
         <meshBasicMaterial color={PRIMARY} transparent opacity={0.1} />
       </mesh>
-      {/* Jupiter — pale sand, the bigger one */}
-      <mesh ref={jupiter}>
-        <sphereGeometry args={[0.22, 24, 24]} />
-        <meshStandardMaterial color="#e3cfa8" roughness={0.7} metalness={0.1} />
-      </mesh>
+
+      {/* Jupiter — pale sand gas bands, the bigger one */}
+      <group ref={jupiter} rotation={[0.1, 0, 0.18]}>
+        <mesh>
+          <sphereGeometry args={[0.22, 32, 32]} />
+          <meshStandardMaterial map={jupiterMap} roughness={0.8} metalness={0.05} />
+        </mesh>
+        <mesh scale={1.18}>
+          <sphereGeometry args={[0.22, 16, 16]} />
+          <meshBasicMaterial
+            color="#e8d8b4"
+            transparent
+            opacity={0.12}
+            side={THREE.BackSide}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
+        </mesh>
+      </group>
+
       {/* Kepler — brindle with the dark mask, smaller and quicker */}
-      <mesh ref={kepler}>
-        <sphereGeometry args={[0.15, 24, 24]} />
-        <meshStandardMaterial color="#6e5d4c" roughness={0.6} metalness={0.15} />
-      </mesh>
+      <group ref={kepler} rotation={[-0.15, 0, -0.25]}>
+        <mesh>
+          <sphereGeometry args={[0.15, 32, 32]} />
+          <meshStandardMaterial map={keplerMap} roughness={0.75} metalness={0.05} />
+        </mesh>
+        <mesh scale={1.2}>
+          <sphereGeometry args={[0.15, 16, 16]} />
+          <meshBasicMaterial
+            color="#a89478"
+            transparent
+            opacity={0.1}
+            side={THREE.BackSide}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
+        </mesh>
+      </group>
     </>
   );
 }
