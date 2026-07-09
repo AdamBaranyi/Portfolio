@@ -50,42 +50,44 @@ export default function Navbar() {
   return (
     <>
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <a href="#hero" className="nav-logo" aria-label="Go to start">
-          <span className="logo-mark">AB</span>
-          <span className="logo-sub">frontend developer</span>
-        </a>
+        <div className="navbar-inner">
+          <a href="#hero" className="nav-logo" aria-label="Go to start">
+            <span className="logo-mark">AB</span>
+            <span className="logo-sub">frontend developer</span>
+          </a>
 
-        <nav className="nav-desktop">
-          {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href} className="nav-link">
-              {t(item.key)}
-            </a>
-          ))}
-        </nav>
+          <nav className="nav-desktop">
+            {NAV_ITEMS.map((item) => (
+              <a key={item.href} href={item.href} className="nav-link">
+                {t(item.key)}
+              </a>
+            ))}
+          </nav>
 
-        <div className="nav-right">
-          <div className="nav-socials">
-            <a href={`mailto:${contactInfo.email}`} aria-label="Email">
-              <MailIcon size={20} />
-            </a>
-            <a href={contactInfo.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <LinkedInIcon size={20} />
-            </a>
-            <a href={contactInfo.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-              <GitHubIcon size={20} />
-            </a>
+          <div className="nav-right">
+            <div className="nav-socials">
+              <a href={`mailto:${contactInfo.email}`} aria-label="Email">
+                <MailIcon size={20} />
+              </a>
+              <a href={contactInfo.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <LinkedInIcon size={20} />
+              </a>
+              <a href={contactInfo.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+                <GitHubIcon size={20} />
+              </a>
+            </div>
+            <LangToggle id="nav-lang" />
+            <button
+              className={`hamburger ${menuOpen ? 'open' : ''}`}
+              aria-label="Open navigation"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
           </div>
-          <LangToggle id="nav-lang" />
-          <button
-            className={`hamburger ${menuOpen ? 'open' : ''}`}
-            aria-label="Open navigation"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
         </div>
       </header>
 
