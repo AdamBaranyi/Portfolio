@@ -1,14 +1,14 @@
 .footer {
   border-top: 1px solid var(--border);
-  padding: 36px 0;
   background: rgba(7, 10, 6, 0.7);
 }
 
-/* same box as .section so the footer lines up with the main content */
+/* same column as sections/navbar, same height as the navbar */
 .footer-inner {
   max-width: 1200px;
+  min-height: var(--nav-height);
   margin: 0 auto;
-  padding: 0 6vw;
+  padding: 14px 6vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,10 +56,6 @@
 }
 
 .footer-tech {
-  max-width: 1200px;
-  margin: 18px auto 0;
-  padding: 0 6vw;
-  text-align: center;
   color: var(--text-muted);
   font-size: 0.8rem;
   letter-spacing: 0.04em;
@@ -71,9 +67,11 @@
   font-weight: 600;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .footer-inner {
     flex-direction: column;
     text-align: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 }

@@ -27,17 +27,17 @@ export default function Footer() {
           <a href="#/imprint">{t('imprint')}</a>
           <a href="#/privacy">{t('privacy_policy')}</a>
         </nav>
+        <p className="footer-tech">
+          {t('footer_built')}{' '}
+          {techStack.map((tech, i) => (
+            <span key={tech}>
+              <span className="tech-name">{tech}</span>
+              {i < techStack.length - 1 && ' · '}
+            </span>
+          ))}
+        </p>
         <span className="footer-copy">© Adam Baranyi {year}</span>
       </div>
-      <p className="footer-tech">
-        {t('footer_built')}{' '}
-        {techStack.map((tech, i) => (
-          <span key={tech}>
-            <span className="tech-name">{tech}</span>
-            {i < techStack.length - 1 && ' · '}
-          </span>
-        ))}
-      </p>
     </footer>
   );
 }
