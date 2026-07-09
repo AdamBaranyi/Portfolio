@@ -231,12 +231,13 @@ button {
 }
 
 /* ─── Glass card ─────────────────────────────────────────── */
+/* No backdrop-filter here on purpose: a dozen blurred cards make
+   scrolling expensive on high-res desktops. A slightly more opaque
+   background looks nearly identical and costs nothing. */
 .glass {
-  background: var(--bg-elevated);
+  background: rgba(17, 22, 14, 0.88);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 
 /* ─── Reveal helper (GSAP sets the end state) ────────────── */

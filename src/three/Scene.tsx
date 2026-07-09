@@ -199,7 +199,7 @@ export default function Scene({ compact }: SceneProps) {
     <div className="scene-canvas" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 55 }}
-        dpr={[1, compact ? 1.5 : 2]}
+        dpr={[1, 1.5]}
         gl={{ antialias: false, powerPreference: 'high-performance' }}
         eventSource={document.body}
         eventPrefix="client"
